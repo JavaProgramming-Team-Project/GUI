@@ -1,5 +1,6 @@
 package ui;
 
+import com.sun.tools.javac.Main;
 import event.SignUpEvent;
 
 import javax.swing.*;
@@ -13,12 +14,13 @@ public class SignUpGUI extends JFrame {
     public SignUpGUI() {
         MainPanel = new JPanel();
         MainPanel.setLayout(null);
+        MainPanel.setBackground(Color.WHITE);
 
         JPanel InputPanel = new JPanel();
         InputPanel.setBackground(Color.WHITE);
         InputPanel.setLayout(null);
         InputPanel.setBounds(120,30,250,400);
-        InputPanel.setBorder(new TitledBorder(new LineBorder(Color.black,1)));
+        InputPanel.setBorder(new TitledBorder(new LineBorder(Color.LIGHT_GRAY,1)));
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(null);
