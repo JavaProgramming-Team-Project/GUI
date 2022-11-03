@@ -25,7 +25,8 @@ public class SignUpEvent implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        member = new Member(1L, idField.getText(), passwordField.getText(), nameField.getText(),
+        member = new Member();
+        member.Member_register(1L, idField.getText(), passwordField.getText(), nameField.getText(),
                 phoneField.getText(), Integer.parseInt(ageField.getText()));
         new SignUpApi(member);
     }

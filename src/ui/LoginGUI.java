@@ -12,6 +12,7 @@ public class LoginGUI extends JFrame implements ActionListener {
     public LoginGUI(){
         panel = new JPanel();
         panel.setLayout(null);
+        panel.setBackground(Color.WHITE);
 
         JLabel idLabel = new JLabel("아이디");
         idLabel.setBounds(100,100,100,100);
@@ -35,7 +36,8 @@ public class LoginGUI extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 JLabel la =(JLabel)e.getSource();
                 if(la.getText().equals("회원가입")){
-                    System.out.println("체크체크");
+                    dispose();
+                    new SignUpGUI();
                 }
             }
         });
@@ -52,7 +54,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 
         setVisible(true);
         setSize(500,500);
-        setTitle("Login");
+        setTitle("로그인");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
