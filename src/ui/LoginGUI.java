@@ -9,97 +9,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import javax.swing.plaf.basic.BasicTextFieldUI;
-import javax.swing.text.JTextComponent;
-
-class HintTextFieldUI extends BasicTextFieldUI implements FocusListener {
-    private String hint;
-    private boolean hideOnFocus;
-    private Color color;
-    public Color getColor() {
-        return color;
-    }
-    public void setColor(Color color) {
-        this.color = color;
-        repaint();
-    }
-    private void repaint() {
-        if(getComponent() != null) {
-            getComponent().repaint();
-        }
-    }
-    public boolean isHideOnFocus() {
-        return hideOnFocus;
-    }
-    public void setHideOnFocus(boolean hideOnFocus) {
-        this.hideOnFocus = hideOnFocus;
-        repaint();
-    }
-    public String getHint() {
-        return hint;
-    }
-    public void setHint(String hint) {
-        this.hint = hint;
-        repaint();
-    }
-    public HintTextFieldUI(String hint) {
-        this(hint,false);
-    }
-    public HintTextFieldUI(String hint, boolean hideOnFocus) {
-        this(hint,hideOnFocus, null);
-    }
-    public HintTextFieldUI(String hint, boolean hideOnFocus, Color color) {
-        this.hint = hint;
-        this.hideOnFocus = hideOnFocus;
-        this.color = color;
-    }
-    @Override
-    protected void paintSafely(Graphics g) {
-        super.paintSafely(g);
-        JTextComponent comp = getComponent();
-        if(hint!=null && comp.getText().length() == 0 && (!(hideOnFocus && comp.hasFocus()))){
-            if(color != null) {
-                g.setColor(color);
-            } else {
-                g.setColor(comp.getForeground().brighter().brighter().brighter());
-            }
-            int padding = (comp.getHeight() - comp.getFont().getSize())/2;
-            g.drawString(hint, 2, comp.getHeight()-padding-1);
-        }
-    }
-    @Override
-    public void focusGained(FocusEvent e) {
-        if(hideOnFocus) repaint();
-    }
-    @Override
-    public void focusLost(FocusEvent e) {
-        if(hideOnFocus) repaint();
-    }
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        getComponent().addFocusListener(this);
-    }
-    @Override
-    protected void uninstallListeners() {
-        super.uninstallListeners();
-        getComponent().removeFocusListener(this);
-    }
-}
 
 public class LoginGUI extends JFrame implements ActionListener {
     private JPanel MainPanel;
     private JPanel InputPanel;
     private JPanel ButtonPanel;
-    private HintTextFieldUI hintText;
+    private Function function;
     public LoginGUI(){
-        Color LoginBtnColor = new Color(0x03C75A);
+        // 색 지정 코드
+        Color LoginBtnColor = new Color(0x18A8F1);
         Color backgroundColor = new Color(0xF6F6F6);
-        Color LoginBtnBorderColor = new Color(0x03B251);
+        Color LoginBtnBorderColor = new Color(0xB8E9FF);
 
+        // ------------------------------------- 패널 관련 코드 ------------------------------------
         MainPanel = new JPanel();
         MainPanel.setLayout(null);
         MainPanel.setBackground(backgroundColor);
@@ -115,6 +37,7 @@ public class LoginGUI extends JFrame implements ActionListener {
         ButtonPanel.setBackground(backgroundColor);
         ButtonPanel.setBounds(10,200,380,80);
 
+        // ------------------------------------- 라벨 관련 코드 ------------------------------------
         JLabel idLabel = new JLabel("아이디");
         //idLabel.setBounds(40,60,900,100);
         idLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -126,12 +49,12 @@ public class LoginGUI extends JFrame implements ActionListener {
         passwordLabel.setFont(idLabel.getFont().deriveFont(17.0f));
 
         JTextField idField = new JTextField(15);
-        idField.setUI(new HintTextFieldUI("아이디", true));
+        idField.setUI(new Function.HintTextFieldUI("아이디", true));
         idField.setBounds(50,66,300,45);
         idField.setBorder(new TitledBorder(new LineBorder(Color.lightGray,1)));
 
         JTextField passwordField = new JTextField(15);
-        passwordField.setUI(new HintTextFieldUI("비밀번호",true));
+        passwordField.setUI(new Function.HintTextFieldUI("비밀번호",true));
         passwordField.setBounds(50,110,300,45);
         passwordField.setBorder(new TitledBorder(new LineBorder(Color.lightGray,1)));
 
