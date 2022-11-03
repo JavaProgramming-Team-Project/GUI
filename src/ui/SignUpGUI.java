@@ -1,6 +1,5 @@
 package ui;
 
-import com.sun.tools.javac.Main;
 import event.SignUpEvent;
 
 import javax.swing.*;
@@ -9,6 +8,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class SignUpGUI extends JFrame {
+    Color color = new Color(0xF6F6F6);
     private JPanel MainPanel;
 
     public SignUpGUI() {
@@ -23,7 +23,7 @@ public class SignUpGUI extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(null);
         buttonPanel.setBounds(10,400,230,50);
-        buttonPanel.setBackground(Color.gray);
+        buttonPanel.setBackground(color);
 
         // -------------------------라벨 구간---------------------------
 
@@ -55,23 +55,23 @@ public class SignUpGUI extends JFrame {
         // ----------------------텍스트 필드 구간---------------------
 
         JTextField idField = new JTextField(13);
-        idField.setBounds(10,30,230,30);
+        idField.setBounds(10,30,230,35);
         idField.setBorder(new TitledBorder(new LineBorder(Color.LIGHT_GRAY,1)));
 
         JTextField passwordField = new JTextField(13);
-        passwordField.setBounds(10,100,230,30);
+        passwordField.setBounds(10,100,230,35);
         passwordField.setBorder(new TitledBorder(new LineBorder(Color.LIGHT_GRAY,1)));
 
         JTextField nameField = new JTextField(13);
-        nameField.setBounds(10,170,230,30);
+        nameField.setBounds(10,170,230,35);
         nameField.setBorder(new TitledBorder(new LineBorder(Color.LIGHT_GRAY,1)));
 
         JTextField phoneField = new JTextField(13);
-        phoneField.setBounds(10,240,230,30);
+        phoneField.setBounds(10,240,230,35);
         phoneField.setBorder(new TitledBorder(new LineBorder(Color.LIGHT_GRAY,1)));
 
         JTextField ageField = new JTextField(13);
-        ageField.setBounds(10,310,230,30);
+        ageField.setBounds(10,310,230,35);
         ageField.setBorder(new TitledBorder(new LineBorder(Color.LIGHT_GRAY,1)));
 
         JButton signUpBtn = new JButton("가입하기");
@@ -93,6 +93,7 @@ public class SignUpGUI extends JFrame {
 
         InputPanel.add(nameLabel);
         InputPanel.add(nameField);
+
 
         InputPanel.add(phoneLabel);
         InputPanel.add(phoneField);
