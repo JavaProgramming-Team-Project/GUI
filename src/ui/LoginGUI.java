@@ -4,18 +4,17 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.awt.Color;
 
 public class LoginGUI extends JFrame implements ActionListener {
     private JPanel MainPanel;
     private JPanel InputPanel;
     private JPanel ButtonPanel;
+    private Container ct;
     private Function function;
     public LoginGUI(){
+        ct = getContentPane();
         // 색 지정 코드
         Color LoginBtnColor = new Color(0x18A8F1);
         Color backgroundColor = new Color(0xF6F6F6);
@@ -89,7 +88,7 @@ public class LoginGUI extends JFrame implements ActionListener {
         InputPanel.add(passwordField);
         InputPanel.add(ButtonPanel);
         MainPanel.add(InputPanel);
-        this.add(MainPanel);
+        ct.add(MainPanel);
 
         loginBtn.addActionListener(this);
 
@@ -98,14 +97,14 @@ public class LoginGUI extends JFrame implements ActionListener {
         setTitle("로그인");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
     }
 
     public void actionPerformed(ActionEvent e){
         switch (e.getActionCommand()){
             case "로그인":
             {
-                System.out.println("로그인");
+                new MainPageGUI();
+                dispose();
             }
         }
     }

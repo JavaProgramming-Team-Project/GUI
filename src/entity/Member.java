@@ -8,16 +8,7 @@ public class Member {
     private String phone;
     private int age;
 
-    public Member() {
-
-    }
-
-    public void Member_login(String id, String password){
-        this.id = id;
-        this.password = password;
-    }
-
-    public void Member_register(Long memberId, String id, String password, String name, String phone, int age){
+    public Member(Long memberId, String id, String password, String name, String phone, int age) {
         this.memberId = memberId;
         this.id = id;
         this.password = password;

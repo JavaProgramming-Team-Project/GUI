@@ -15,9 +15,8 @@ public class LoginEvent implements ActionListener {
         passwordField = password;
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        member = new Member();
+
     }
 }

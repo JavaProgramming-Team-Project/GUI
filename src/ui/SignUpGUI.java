@@ -8,15 +8,16 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import static ui.Function.imageSetSize;
 
 public class SignUpGUI extends JFrame {
     private JPanel MainPanel;
     private Function function;
+    private Container ct;
 
     public SignUpGUI() {
+        ct = getContentPane();
         // ----------------------------- 색상 지정 -------------------------------
         Color SignUpBtnColor = new Color(0x18A8F1);
         Color backgroundColor = new Color(0xF6F6F6);
@@ -154,12 +155,12 @@ public class SignUpGUI extends JFrame {
         MainPanel.add(BackLabel);
         MainPanel.add(InputPanel);
 
-        this.add(MainPanel);
+        ct.add(MainPanel);
 
         // ----------------------------- 이벤트 연동 -------------------------------
 
         signUpBtn.addActionListener(new SignUpEvent(idField, passwordField, nameField,
-                phoneField, ageField));
+                phoneField, ageField, this));
 
         BackLabel.addMouseListener(new MouseAdapter() {
             @Override
