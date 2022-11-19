@@ -28,6 +28,8 @@ public class MainPageGUI extends JFrame{
         ImageIcon BannerIcon = new ImageIcon("src/Icon//배너.png");
         BannerIcon = imageSetSize(BannerIcon,1300,310);
 
+        ImageIcon AccommodationIcon = new ImageIcon("")
+
         // 패널
         ct = getContentPane();
         ct.setLayout(null);
@@ -115,8 +117,8 @@ public class MainPageGUI extends JFrame{
         MainPagePanel.add(recommendPanel);
 
         ct.add(HeadPanel);
-        //ct.add(MainPagePanel);
-        ct.add(MyPagePanel);
+        ct.add(MainPagePanel);
+        //ct.add(MyPagePanel);
 
         setVisible(true);
         setSize(1300,750);
