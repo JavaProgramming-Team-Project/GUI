@@ -12,12 +12,22 @@ import static ui.Function.imageSetSize;
 
 public class MainPageGUI extends JFrame{
     public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
+    // 이벤트 관련 패널
+    private JLabel MyPageLabel;
+    private JLabel MainLabel;
+    private JLabel LogoutButton;
+
+    // 메인 페이지 패널
+
     private JPanel MyPagePanel;
     private JPanel MainPagePanel;
     private JPanel HeadPanel; // 헤드패널은 계속 고정됨,
     private JPanel CategoryIconPanel; // 메인화면 카테고리 패널
     private JPanel BannerPanel; // 가운데 이벤트 패널..?
     private JPanel recommendPanel; // 상품추천 패널
+
+    // 카테고리 관련 패널
+
     public JPanel StayPanel;
     public JPanel leisurePanel;
     public JPanel FestivalPanel;
@@ -26,11 +36,15 @@ public class MainPageGUI extends JFrame{
     public JPanel TicketPanel;
     public JPanel RestaurantPanel;
     public JPanel BeautyPanel;
-    private Container ct;
-    public MainPageGUI(){
+
+    // 컨테이너~
+    public Container ct;
+
+    public class MyMouseListener{
+
     }
 
-    public void Display(){
+    public MainPageGUI(){
         // 색상
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
@@ -102,6 +116,7 @@ public class MainPageGUI extends JFrame{
         MyPagePanel.setLayout(null);
         MyPagePanel.setBounds(0,70,1300,680);
         MyPagePanel.setBackground(Color.white);
+        MyPagePanel.setVisible(false);
 
         StayPanel= new JPanel();
         StayPanel.setLayout(null);
@@ -159,23 +174,23 @@ public class MainPageGUI extends JFrame{
         SearchLabel.setBounds(860,11,100,50);
         SearchLabel.setForeground(Color.WHITE);
 
-        JLabel UserName = new JLabel("마이페이지");
-        UserName.setFont(new Font("맑은 고딕",Font.BOLD, 11));
-        UserName.setFont(UserName.getFont().deriveFont(21.0f));
-        UserName.setBounds(980,11,200,50);
-        UserName.setForeground(Color.WHITE);
+        MyPageLabel = new JLabel("마이페이지");
+        MyPageLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
+        MyPageLabel.setFont(MyPageLabel.getFont().deriveFont(21.0f));
+        MyPageLabel.setBounds(980,11,105,50);
+        MyPageLabel.setForeground(Color.WHITE);
 
-        JLabel MainLabel = new JLabel("메인");
+        MainLabel = new JLabel("메인");
         MainLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         MainLabel.setFont(MainLabel.getFont().deriveFont(21.0f));
-        MainLabel.setBounds(920,11,100,50);
+        MainLabel.setBounds(920,11,50,50);
         MainLabel.setForeground(Color.WHITE);
 
-        JLabel LogOutButton = new JLabel("로그아웃");
-        LogOutButton.setFont(new Font("맑은 고딕",Font.BOLD, 11));
-        LogOutButton.setFont(LogOutButton.getFont().deriveFont(21.0f));
-        LogOutButton.setBounds(1100,11,200,50);
-        LogOutButton.setForeground(Color.WHITE);
+        LogoutButton = new JLabel("로그아웃");
+        LogoutButton.setFont(new Font("맑은 고딕",Font.BOLD, 11));
+        LogoutButton.setFont(LogoutButton.getFont().deriveFont(21.0f));
+        LogoutButton.setBounds(1100,11,200,50);
+        LogoutButton.setForeground(Color.WHITE);
 
         JLabel Banner = new JLabel(BannerIcon);
         Banner.setBounds(-10,0,1300,310);
@@ -256,9 +271,9 @@ public class MainPageGUI extends JFrame{
         HeadPanel.add(TitleNameLabel);
         HeadPanel.add(MagnifierLabel);
         HeadPanel.add(SearchLabel);
-        HeadPanel.add(UserName);
+        HeadPanel.add(MyPageLabel);
         HeadPanel.add(MainLabel);
-        HeadPanel.add(LogOutButton);
+        HeadPanel.add(LogoutButton);
 
         StayPanel.add(Accommodation);
         StayPanel.add(StayLabel);
@@ -301,13 +316,74 @@ public class MainPageGUI extends JFrame{
 
         ct.add(HeadPanel);
         ct.add(MainPagePanel);
-        //ct.add(MyPagePanel);
+        ct.add(MyPagePanel);
 
         setVisible(true);
         setSize(1300,750);
         setTitle("EVERY BOOK");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
+        class MyMouseListener implements MouseListener{
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(e.getSource() == StayPanel)
+                    System.out.println("숙박");
+                else if (e.getSource() == leisurePanel) {
+                    System.out.println("레저");
+                }
+                else if (e.getSource() == FestivalPanel) {
+                    System.out.println("축제");
+                }
+                else if (e.getSource() == ShowPanel) {
+                    System.out.println("공연");
+                }
+                else if (e.getSource() == DisplayPanel) {
+                    System.out.println("전시");
+                }
+                else if (e.getSource() == TicketPanel) {
+                    System.out.println("티켓");
+                }
+                else if (e.getSource() == RestaurantPanel) {
+                    System.out.println("식당");
+                }
+                else if (e.getSource() == BeautyPanel) {
+                    System.out.println("뷰티");
+                }
+                else if(e.getSource() == MyPageLabel){
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(true);
+                }
+                else if(e.getSource() == MainLabel){
+                    MyPagePanel.setVisible(false);
+                    MainPagePanel.setVisible(true);
+                }
+                else if(e.getSource() == LogoutButton){
+                    dispose();
+                    new LoginGUI();
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        }
 
         StayPanel.addMouseListener(new MyMouseListener());
         leisurePanel.addMouseListener(new MyMouseListener());
@@ -317,58 +393,15 @@ public class MainPageGUI extends JFrame{
         TicketPanel.addMouseListener(new MyMouseListener());
         RestaurantPanel.addMouseListener(new MyMouseListener());
         BeautyPanel.addMouseListener(new MyMouseListener());
+        MyPageLabel.addMouseListener(new MyMouseListener());
+        MainLabel.addMouseListener(new MyMouseListener());
+        LogoutButton.addMouseListener(new MyMouseListener());
     }
 
-    class MyMouseListener implements MouseListener{
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if(e.getSource() == StayPanel)
-                System.out.println("숙박");
-            else if (e.getSource() == leisurePanel) {
-                System.out.println("레저");
-            }
-            else if (e.getSource() == FestivalPanel) {
-                System.out.println("축제");
-            }
-            else if (e.getSource() == ShowPanel) {
-                System.out.println("공연");
-            }
-            else if (e.getSource() == DisplayPanel) {
-                System.out.println("전시");
-            }
-            else if (e.getSource() == TicketPanel) {
-                System.out.println("티켓");
-            }
-            else if (e.getSource() == RestaurantPanel) {
-                System.out.println("식당");
-            }
-            else if (e.getSource() == BeautyPanel) {
-                System.out.println("뷰티");
-            }
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
+    public void Display(){
     }
+
     public static void main(String[] args){
-        MainPageGUI mainPageGUI = new MainPageGUI();
-        mainPageGUI.Display();
+        new MainPageGUI();
     }
 }
