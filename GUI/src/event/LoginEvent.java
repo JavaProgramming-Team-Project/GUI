@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginEvent extends JFrame implements ActionListener {
+    MainPageGUI mainPageGUI = new MainPageGUI();
     Member member;
     JTextField idField;
     JTextField passwordField;
@@ -40,7 +41,7 @@ public class LoginEvent extends JFrame implements ActionListener {
                 // 로그인 관련 API 필요
                 // 추가 전 임시 구문 사용
                 jframe.dispose();
-                new MainPageGUI();
+                mainPageGUI.Display();
             }
         }
     }

@@ -1,7 +1,12 @@
 package event;
 
-public class MainPageEvent {
-    public MainPageEvent(){
+import ui.MainPageGUI;
 
+import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class MainPageEvent extends JPanel{
+    public MainPageEvent(){
     }
 }

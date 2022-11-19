@@ -1,7 +1,12 @@
 package ui;
 
+import com.sun.tools.javac.Main;
+import event.MainPageEvent;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import static ui.Function.imageSetSize;
 
@@ -13,16 +18,19 @@ public class MainPageGUI extends JFrame{
     private JPanel CategoryIconPanel; // 메인화면 카테고리 패널
     private JPanel BannerPanel; // 가운데 이벤트 패널..?
     private JPanel recommendPanel; // 상품추천 패널
-    private JPanel StayPanel;
-    private JPanel leisurePanel;
-    private JPanel FestivalPanel;
-    private JPanel ShowPanel;
-    private JPanel DisplayPanel;
-    private JPanel TicketPanel;
-    private JPanel RestaurantPanel;
-    private JPanel BeautyPanel;
+    public JPanel StayPanel;
+    public JPanel leisurePanel;
+    public JPanel FestivalPanel;
+    public JPanel ShowPanel;
+    public JPanel DisplayPanel;
+    public JPanel TicketPanel;
+    public JPanel RestaurantPanel;
+    public JPanel BeautyPanel;
     private Container ct;
     public MainPageGUI(){
+    }
+
+    public void Display(){
         // 색상
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
@@ -229,7 +237,7 @@ public class MainPageGUI extends JFrame{
         JLabel RestaurantIconLabel = new JLabel(RestaurantIcon);
         RestaurantIconLabel.setBounds(0,-5,100,100);
 
-        JLabel RestaurantLabel = new JLabel("티켓");
+        JLabel RestaurantLabel = new JLabel("식당");
         RestaurantLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         RestaurantLabel.setFont(RestaurantLabel.getFont().deriveFont(21.0f));
         RestaurantLabel.setBounds(29,80,50,50);
@@ -238,7 +246,7 @@ public class MainPageGUI extends JFrame{
         JLabel BeautyIconLabel = new JLabel(BeautyIcon);
         BeautyIconLabel.setBounds(0,-5,100,100);
 
-        JLabel BeautyLabel = new JLabel("티켓");
+        JLabel BeautyLabel = new JLabel("뷰티");
         BeautyLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         BeautyLabel.setFont(BeautyLabel.getFont().deriveFont(21.0f));
         BeautyLabel.setBounds(29,80,50,50);
@@ -300,8 +308,67 @@ public class MainPageGUI extends JFrame{
         setTitle("EVERY BOOK");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
+        StayPanel.addMouseListener(new MyMouseListener());
+        leisurePanel.addMouseListener(new MyMouseListener());
+        FestivalPanel.addMouseListener(new MyMouseListener());
+        ShowPanel.addMouseListener(new MyMouseListener());
+        DisplayPanel.addMouseListener(new MyMouseListener());
+        TicketPanel.addMouseListener(new MyMouseListener());
+        RestaurantPanel.addMouseListener(new MyMouseListener());
+        BeautyPanel.addMouseListener(new MyMouseListener());
+    }
+
+    class MyMouseListener implements MouseListener{
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if(e.getSource() == StayPanel)
+                System.out.println("숙박");
+            else if (e.getSource() == leisurePanel) {
+                System.out.println("레저");
+            }
+            else if (e.getSource() == FestivalPanel) {
+                System.out.println("축제");
+            }
+            else if (e.getSource() == ShowPanel) {
+                System.out.println("공연");
+            }
+            else if (e.getSource() == DisplayPanel) {
+                System.out.println("전시");
+            }
+            else if (e.getSource() == TicketPanel) {
+                System.out.println("티켓");
+            }
+            else if (e.getSource() == RestaurantPanel) {
+                System.out.println("식당");
+            }
+            else if (e.getSource() == BeautyPanel) {
+                System.out.println("뷰티");
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
     public static void main(String[] args){
-        new MainPageGUI();
+        MainPageGUI mainPageGUI = new MainPageGUI();
+        mainPageGUI.Display();
     }
 }
