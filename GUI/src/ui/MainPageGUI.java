@@ -326,94 +326,6 @@ public class MainPageGUI extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        class MyMouseListener implements MouseListener{
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if(e.getSource() == StayPanel){
-                    CancelVisit();
-                    categoryPanelGUI.Convenience();
-                    CategoryPanel.setVisible(true);
-                    categoryPanelGUI.StayLabel.setOpaque(true);
-                }
-
-                else if (e.getSource() == leisurePanel) {
-                    CancelVisit();
-                    categoryPanelGUI.Convenience();
-                    CategoryPanel.setVisible(true);
-                    categoryPanelGUI.LeisureLabel.setOpaque(true);
-                }
-                else if (e.getSource() == FestivalPanel) {
-                    CancelVisit();
-                    categoryPanelGUI.Convenience();
-                    CategoryPanel.setVisible(true);
-                    categoryPanelGUI.FestivalLabel.setOpaque(true);
-                }
-                else if (e.getSource() == ShowPanel) {
-                    CancelVisit();
-                    categoryPanelGUI.Convenience();
-                    CategoryPanel.setVisible(true);
-                    categoryPanelGUI.ShowLabel.setOpaque(true);
-                }
-                else if (e.getSource() == DisplayPanel) {
-                    CancelVisit();
-                    categoryPanelGUI.Convenience();
-                    CategoryPanel.setVisible(true);
-                    categoryPanelGUI.DisplayLabel.setOpaque(true);
-                }
-                else if (e.getSource() == TicketPanel) {
-                    CancelVisit();
-                    categoryPanelGUI.Convenience();
-                    CategoryPanel.setVisible(true);
-                    categoryPanelGUI.TicketLabel.setOpaque(true);
-                }
-                else if (e.getSource() == RestaurantPanel) {
-                    CancelVisit();
-                    categoryPanelGUI.Convenience();
-                    CategoryPanel.setVisible(true);
-                    categoryPanelGUI.RestaurantLabel.setOpaque(true);
-                }
-                else if (e.getSource() == BeautyPanel) {
-                    CancelVisit();
-                    categoryPanelGUI.Convenience();
-                    CategoryPanel.setVisible(true);
-                    categoryPanelGUI.BeautyLabel.setOpaque(true);
-                }
-                else if(e.getSource() == MyPageLabel){
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(true);
-                }
-                else if(e.getSource() == MainLabel){
-                    MyPagePanel.setVisible(false);
-                    MainPagePanel.setVisible(true);
-                }
-                else if(e.getSource() == LogoutButton){
-                    dispose();
-                    new LoginGUI();
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        }
-
         categoryPanelGUI.setPanel(categoryPanelGUI);
 
         StayPanel.addMouseListener(new MyMouseListener());
@@ -427,6 +339,94 @@ public class MainPageGUI extends JFrame{
         MyPageLabel.addMouseListener(new MyMouseListener());
         MainLabel.addMouseListener(new MyMouseListener());
         LogoutButton.addMouseListener(new MyMouseListener());
+    }
+
+    class MyMouseListener implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if(e.getSource() == StayPanel){
+                CancelVisit();
+                categoryPanelGUI.Convenience();
+                CategoryPanel.setVisible(true);
+                categoryPanelGUI.StayLabel.setOpaque(true);
+            }
+
+            else if (e.getSource() == leisurePanel) {
+                CancelVisit();
+                categoryPanelGUI.Convenience();
+                CategoryPanel.setVisible(true);
+                categoryPanelGUI.LeisureLabel.setOpaque(true);
+            }
+            else if (e.getSource() == FestivalPanel) {
+                CancelVisit();
+                categoryPanelGUI.Convenience();
+                CategoryPanel.setVisible(true);
+                categoryPanelGUI.FestivalLabel.setOpaque(true);
+            }
+            else if (e.getSource() == ShowPanel) {
+                CancelVisit();
+                categoryPanelGUI.Convenience();
+                CategoryPanel.setVisible(true);
+                categoryPanelGUI.ShowLabel.setOpaque(true);
+            }
+            else if (e.getSource() == DisplayPanel) {
+                CancelVisit();
+                categoryPanelGUI.Convenience();
+                CategoryPanel.setVisible(true);
+                categoryPanelGUI.DisplayLabel.setOpaque(true);
+            }
+            else if (e.getSource() == TicketPanel) {
+                CancelVisit();
+                categoryPanelGUI.Convenience();
+                CategoryPanel.setVisible(true);
+                categoryPanelGUI.TicketLabel.setOpaque(true);
+            }
+            else if (e.getSource() == RestaurantPanel) {
+                CancelVisit();
+                categoryPanelGUI.Convenience();
+                CategoryPanel.setVisible(true);
+                categoryPanelGUI.RestaurantLabel.setOpaque(true);
+            }
+            else if (e.getSource() == BeautyPanel) {
+                CancelVisit();
+                categoryPanelGUI.Convenience();
+                CategoryPanel.setVisible(true);
+                categoryPanelGUI.BeautyLabel.setOpaque(true);
+            }
+            else if(e.getSource() == MyPageLabel){
+                MainPagePanel.setVisible(false);
+                MyPagePanel.setVisible(true);
+            }
+            else if(e.getSource() == MainLabel){
+                MyPagePanel.setVisible(false);
+                MainPagePanel.setVisible(true);
+            }
+            else if(e.getSource() == LogoutButton){
+                dispose();
+                new LoginGUI();
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
 
     public void CancelVisit(){
