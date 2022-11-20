@@ -4,11 +4,9 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicTextFieldUI;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 
 public class Function extends JFrame{
-
     // 이미지 아이콘 크기 변환 메소드
     static ImageIcon imageSetSize(ImageIcon icon, int i, int j) { // image Size Setting
         Image ximg = icon.getImage();  //ImageIcon을 Image로 변환.
