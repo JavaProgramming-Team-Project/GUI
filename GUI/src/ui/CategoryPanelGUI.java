@@ -1,10 +1,14 @@
 package ui;
 
+import event.CategoryPageEvent;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 public class CategoryPanelGUI {
     public CategoryPanelGUI categoryPanelGUI;
+    public CategoryPageEvent categoryPageEvent = new CategoryPageEvent();
     // 패널 세팅
     public JPanel CategoryPanel;
     public JPanel ButtonPanel;
@@ -129,11 +133,32 @@ public class CategoryPanelGUI {
         CategoryPanel.add(ButtonPanel);
         CategoryPanel.add(ProductPanel);
         CategoryPanel.add(PagePanel);
+
+        // 이벤트 추가 및 연동
+
+        StayLabel.addMouseListener(categoryPageEvent);
+        LeisureLabel.addMouseListener(categoryPageEvent);
+        FestivalLabel.addMouseListener(categoryPageEvent);
+        ShowLabel.addMouseListener(categoryPageEvent);
+        DisplayLabel.addMouseListener(categoryPageEvent);
+        TicketLabel.addMouseListener(categoryPageEvent);
+        RestaurantLabel.addMouseListener(categoryPageEvent);
+        BeautyLabel.addMouseListener(categoryPageEvent);
     }
 
     public void setPanel(CategoryPanelGUI categoryPanelGUI){
         this.categoryPanelGUI = categoryPanelGUI;
+        categoryPageEvent.setPanel(categoryPanelGUI);
     }
 
-
+    public void Remove_highlights(){
+        StayLabel.setOpaque(false);
+        BeautyLabel.setOpaque(false);
+        RestaurantLabel.setOpaque(false);
+        DisplayLabel.setOpaque(false);
+        FestivalLabel.setOpaque(false);
+        TicketLabel.setOpaque(false);
+        ShowLabel.setOpaque(false);
+        LeisureLabel.setOpaque(false);
+    }
 }
