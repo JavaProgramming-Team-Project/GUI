@@ -1,5 +1,7 @@
 package ui;
 
+import event.MainPageEvent;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -8,6 +10,7 @@ import java.awt.event.MouseListener;
 import static ui.Function.imageSetSize;
 
 public class MainPageGUI extends JFrame{
+    public MainPageEvent mainPageEvent;
     public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
     public CategoryPanelGUI categoryPanelGUI = new CategoryPanelGUI();
     // 이벤트 관련 패널
@@ -40,6 +43,7 @@ public class MainPageGUI extends JFrame{
     public Container ct;
 
     public MainPageGUI(){
+        mainPageEvent = new MainPageEvent();
         // 색상
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
@@ -268,7 +272,7 @@ public class MainPageGUI extends JFrame{
         BeautyLabel.setBounds(29,80,50,50);
         BeautyLabel.setForeground(Color.gray);
 
-        // 패널 추가
+        // 패널 추가 ---------------------------------------------------------
         HeadPanel.add(TitleNameLabel);
         HeadPanel.add(MagnifierLabel);
         HeadPanel.add(SearchLabel);
@@ -320,11 +324,7 @@ public class MainPageGUI extends JFrame{
         ct.add(MyPagePanel);
         ct.add(CategoryPanel);
 
-        setVisible(true);
-        setSize(1300,750);
-        setTitle("EVERY BOOK");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        // 이벤트 연동 -------------------------------------------------------
 
         categoryPanelGUI.setPanel(categoryPanelGUI);
 
@@ -339,10 +339,15 @@ public class MainPageGUI extends JFrame{
         MyPageLabel.addMouseListener(new MyMouseListener());
         MainLabel.addMouseListener(new MyMouseListener());
         LogoutButton.addMouseListener(new MyMouseListener());
+
+        setVisible(true);
+        setSize(1300,750);
+        setTitle("EVERY BOOK");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
 
     class MyMouseListener implements MouseListener{
-
         @Override
         public void mouseClicked(MouseEvent e) {
             if(e.getSource() == StayPanel){
@@ -436,6 +441,9 @@ public class MainPageGUI extends JFrame{
     }
 
     public void Display(){
+    }
+
+    public void DisplayItem(){
     }
 
     public static void main(String[] args){
