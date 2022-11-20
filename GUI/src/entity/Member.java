@@ -8,13 +8,17 @@ public class Member {
     private String phone;
     private int age;
 
-    public Member(Long memberId, String id, String password, String name, String phone, int age) {
-        this.memberId = memberId;
+    public Member(String id, String password, String name, String phone, int age) {
+        this.memberId = 0L;
         this.id = id;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.age = age;
+    }
+
+    public Long getMemberId() {
+        return memberId;
     }
 
     public String getId() {
