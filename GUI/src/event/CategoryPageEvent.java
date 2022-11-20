@@ -1,5 +1,6 @@
 package event;
 
+import entity.Item;
 import ui.CategoryPanelGUI;
 
 import javax.swing.*;
@@ -8,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class CategoryPageEvent extends JPanel implements MouseListener {
+    Item item;
     public CategoryPanelGUI cgp;
     public CategoryPageEvent(){
     }

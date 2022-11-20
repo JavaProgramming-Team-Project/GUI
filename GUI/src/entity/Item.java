@@ -2,7 +2,7 @@ package entity;
 
 public class Item {
     private Long ItemId;
-    private String Category;
+    private String[] Category;
     private String Name;
     private String Body;
     private String Phone;
@@ -10,7 +10,7 @@ public class Item {
     private String[] Picture;
     private String Address;
 
-    public Item(Long ItemId, String Category, String name, String body, String Phone, String Price, String[] Picture,
+    public Item(Long ItemId, String[] Category, String name, String body, String Phone, String Price, String[] Picture,
                 String Address){
         this.ItemId = ItemId;
         this.Category = Category;
@@ -46,11 +46,11 @@ public class Item {
         Body = body;
     }
 
-    public String getCategory() {
+    public String[] getCategory() {
         return Category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(String []category) {
         Category = category;
     }
 
