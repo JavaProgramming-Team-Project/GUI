@@ -164,7 +164,7 @@ public class MainPageGUI extends JFrame{
         CategoryPanel.setLayout(null);
         CategoryPanel.setBounds(0,70,1300,680);
         CategoryPanel.setBackground(Color.white);
-        CategoryPanel.setVisible(true);
+        CategoryPanel.setVisible(false);
 
         // 라벨
         JLabel TitleNameLabel = new JLabel("EveryBook");
@@ -323,8 +323,8 @@ public class MainPageGUI extends JFrame{
         MainPagePanel.add(recommendPanel);
 
         ct.add(HeadPanel);
-        //ct.add(MainPagePanel);
-        //ct.add(MyPagePanel);
+        ct.add(MainPagePanel);
+        ct.add(MyPagePanel);
         ct.add(CategoryPanel);
 
         setVisible(true);
@@ -336,28 +336,62 @@ public class MainPageGUI extends JFrame{
         class MyMouseListener implements MouseListener{
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(e.getSource() == StayPanel)
-                    System.out.println("숙박");
+                if(e.getSource() == StayPanel){
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(false);
+                    CategoryPanel.setVisible(true);
+                    categoryPanelGUI.StayLabel.setOpaque(true);
+                    categoryPanelGUI.setPanel(categoryPanelGUI);
+                }
+
                 else if (e.getSource() == leisurePanel) {
-                    System.out.println("레저");
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(false);
+                    CategoryPanel.setVisible(true);
+                    categoryPanelGUI.LeisureLabel.setOpaque(true);
+                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == FestivalPanel) {
-                    System.out.println("축제");
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(false);
+                    CategoryPanel.setVisible(true);
+                    categoryPanelGUI.FestivalLabel.setOpaque(true);
+                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == ShowPanel) {
-                    System.out.println("공연");
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(false);
+                    CategoryPanel.setVisible(true);
+                    categoryPanelGUI.ShowLabel.setOpaque(true);
+                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == DisplayPanel) {
-                    System.out.println("전시");
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(false);
+                    CategoryPanel.setVisible(true);
+                    categoryPanelGUI.DisplayLabel.setOpaque(true);
+                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == TicketPanel) {
-                    System.out.println("티켓");
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(false);
+                    CategoryPanel.setVisible(true);
+                    categoryPanelGUI.TicketLabel.setOpaque(true);
+                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == RestaurantPanel) {
-                    System.out.println("식당");
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(false);
+                    CategoryPanel.setVisible(true);
+                    categoryPanelGUI.RestaurantLabel.setOpaque(true);
+                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == BeautyPanel) {
-                    System.out.println("뷰티");
+                    MainPagePanel.setVisible(false);
+                    MyPagePanel.setVisible(false);
+                    CategoryPanel.setVisible(true);
+                    categoryPanelGUI.BeautyLabel.setOpaque(true);
+                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if(e.getSource() == MyPageLabel){
                     MainPagePanel.setVisible(false);
