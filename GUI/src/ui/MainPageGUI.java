@@ -1,8 +1,5 @@
 package ui;
 
-import com.sun.tools.javac.Main;
-import event.MainPageEvent;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -41,10 +38,6 @@ public class MainPageGUI extends JFrame{
 
     // 컨테이너~
     public Container ct;
-
-    public class MyMouseListener{
-
-    }
 
     public MainPageGUI(){
         // 색상
@@ -334,64 +327,57 @@ public class MainPageGUI extends JFrame{
         setLocationRelativeTo(null);
 
         class MyMouseListener implements MouseListener{
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(e.getSource() == StayPanel){
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(false);
+                    CancelVisit();
+                    categoryPanelGUI.Remove_highlights();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.StayLabel.setOpaque(true);
-                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
 
                 else if (e.getSource() == leisurePanel) {
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(false);
+                    CancelVisit();
+                    categoryPanelGUI.Remove_highlights();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.LeisureLabel.setOpaque(true);
-                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == FestivalPanel) {
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(false);
+                    CancelVisit();
+                    categoryPanelGUI.Remove_highlights();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.FestivalLabel.setOpaque(true);
-                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == ShowPanel) {
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(false);
+                    CancelVisit();
+                    categoryPanelGUI.Remove_highlights();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.ShowLabel.setOpaque(true);
-                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == DisplayPanel) {
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(false);
+                    CancelVisit();
+                    categoryPanelGUI.Remove_highlights();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.DisplayLabel.setOpaque(true);
-                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == TicketPanel) {
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(false);
+                    CancelVisit();
+                    categoryPanelGUI.Remove_highlights();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.TicketLabel.setOpaque(true);
-                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == RestaurantPanel) {
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(false);
+                    CancelVisit();
+                    categoryPanelGUI.Remove_highlights();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.RestaurantLabel.setOpaque(true);
-                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if (e.getSource() == BeautyPanel) {
-                    MainPagePanel.setVisible(false);
-                    MyPagePanel.setVisible(false);
+                    CancelVisit();
+                    categoryPanelGUI.Remove_highlights();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.BeautyLabel.setOpaque(true);
-                    categoryPanelGUI.setPanel(categoryPanelGUI);
                 }
                 else if(e.getSource() == MyPageLabel){
                     MainPagePanel.setVisible(false);
@@ -428,6 +414,8 @@ public class MainPageGUI extends JFrame{
             }
         }
 
+        categoryPanelGUI.setPanel(categoryPanelGUI);
+
         StayPanel.addMouseListener(new MyMouseListener());
         leisurePanel.addMouseListener(new MyMouseListener());
         FestivalPanel.addMouseListener(new MyMouseListener());
@@ -439,6 +427,12 @@ public class MainPageGUI extends JFrame{
         MyPageLabel.addMouseListener(new MyMouseListener());
         MainLabel.addMouseListener(new MyMouseListener());
         LogoutButton.addMouseListener(new MyMouseListener());
+    }
+
+    public void CancelVisit(){
+        MainPagePanel.setVisible(false);
+        MyPagePanel.setVisible(false);
+        CategoryPanel.setVisible(false);
     }
 
     public void Display(){
