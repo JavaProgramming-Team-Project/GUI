@@ -4,10 +4,22 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CategoryPanelGUI {
+    public CategoryPanelGUI categoryPanelGUI;
+    // 패널 세팅
     public JPanel CategoryPanel;
     public JPanel ButtonPanel;
     public JPanel ProductPanel;
     public JPanel PagePanel;
+
+    // 라벨
+    public JLabel StayLabel;
+    public JLabel LeisureLabel;
+    public JLabel FestivalLabel;
+    public JLabel ShowLabel;
+    public JLabel DisplayLabel;
+    public JLabel TicketLabel;
+    public JLabel RestaurantLabel;
+    public JLabel BeautyLabel;
 
     public CategoryPanelGUI(){
         // 색 코드
@@ -28,7 +40,7 @@ public class CategoryPanelGUI {
 
         ProductPanel = new JPanel();
         ProductPanel.setLayout(null);
-        ProductPanel.setBackground(Color.YELLOW);
+        ProductPanel.setBackground(Color.GRAY);
         ProductPanel.setBounds(100,70,1100,500);
 
         PagePanel = new JPanel();
@@ -38,75 +50,68 @@ public class CategoryPanelGUI {
 
 
         // 라벨 구문
-        JLabel StayLabel = new JLabel("숙소");
+        StayLabel = new JLabel("숙소");
         StayLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         StayLabel.setFont(StayLabel.getFont().deriveFont(28.0f));
-        StayLabel.setBounds(230,9,100,35);
+        StayLabel.setBounds(180,11,100,35);
         StayLabel.setForeground(Color.GRAY);
         StayLabel.setHorizontalAlignment(JLabel.CENTER);
         StayLabel.setBackground(SoftBlue);
 
-        JLabel LeisureLabel = new JLabel("레저");
+        LeisureLabel = new JLabel("레저");
         LeisureLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         LeisureLabel.setFont(StayLabel.getFont().deriveFont(28.0f));
-        LeisureLabel.setBounds(350,9,100,35);
+        LeisureLabel.setBounds(300,11,100,35);
         LeisureLabel.setForeground(Color.GRAY);
         LeisureLabel.setHorizontalAlignment(JLabel.CENTER);
-        LeisureLabel.setOpaque(true);
         LeisureLabel.setBackground(SoftBlue);
 
-        JLabel FestivalLabel = new JLabel("축제");
+        FestivalLabel = new JLabel("축제");
         FestivalLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         FestivalLabel.setFont(StayLabel.getFont().deriveFont(28.0f));
-        FestivalLabel.setBounds(470,9,100,35);
+        FestivalLabel.setBounds(420,11,100,35);
         FestivalLabel.setForeground(Color.GRAY);
         FestivalLabel.setHorizontalAlignment(JLabel.CENTER);
-        FestivalLabel.setOpaque(true);
         FestivalLabel.setBackground(SoftBlue);
 
-        JLabel ShowLabel = new JLabel("공연");
+        ShowLabel = new JLabel("공연");
         ShowLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         ShowLabel.setFont(StayLabel.getFont().deriveFont(28.0f));
-        ShowLabel.setBounds(590,9,100,35);
+        ShowLabel.setBounds(540,11,100,35);
         ShowLabel.setForeground(Color.GRAY);
         ShowLabel.setHorizontalAlignment(JLabel.CENTER);
-        ShowLabel.setOpaque(true);
         ShowLabel.setBackground(SoftBlue);
 
-        JLabel DisplayLabel = new JLabel("전시");
+        DisplayLabel = new JLabel("전시");
         DisplayLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         DisplayLabel.setFont(StayLabel.getFont().deriveFont(28.0f));
-        DisplayLabel.setBounds(710,9,100,35);
+        DisplayLabel.setBounds(660,11,100,35);
         DisplayLabel.setForeground(Color.GRAY);
         DisplayLabel.setHorizontalAlignment(JLabel.CENTER);
-        DisplayLabel.setOpaque(true);
         DisplayLabel.setBackground(SoftBlue);
 
-        JLabel TicketLabel = new JLabel("티켓");
+        TicketLabel = new JLabel("티켓");
         TicketLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         TicketLabel.setFont(StayLabel.getFont().deriveFont(28.0f));
-        TicketLabel.setBounds(830,9,100,35);
+        TicketLabel.setBounds(780,11,100,35);
         TicketLabel.setForeground(Color.GRAY);
         TicketLabel.setHorizontalAlignment(JLabel.CENTER);
-        TicketLabel.setOpaque(true);
         TicketLabel.setBackground(SoftBlue);
 
-        JLabel RestaurantLabel = new JLabel("식당");
+        RestaurantLabel = new JLabel("식당");
         RestaurantLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         RestaurantLabel.setFont(StayLabel.getFont().deriveFont(28.0f));
-        RestaurantLabel.setBounds(950,9,100,35);
+        RestaurantLabel.setBounds(900,11,100,35);
         RestaurantLabel.setForeground(Color.GRAY);
         RestaurantLabel.setHorizontalAlignment(JLabel.CENTER);
-        RestaurantLabel.setOpaque(true);
         RestaurantLabel.setBackground(SoftBlue);
 
-        JLabel BeautyLabel = new JLabel("뷰티");
+        BeautyLabel = new JLabel("뷰티");
         BeautyLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         BeautyLabel.setFont(StayLabel.getFont().deriveFont(28.0f));
-        BeautyLabel.setBounds(1070,9,100,35);
+        BeautyLabel.setBounds(1020,11,100,35);
         BeautyLabel.setForeground(Color.GRAY);
         BeautyLabel.setHorizontalAlignment(JLabel.CENTER);
-        BeautyLabel.setOpaque(true);
         BeautyLabel.setBackground(SoftBlue);
 
 
@@ -118,10 +123,17 @@ public class CategoryPanelGUI {
         ButtonPanel.add(DisplayLabel);
         ButtonPanel.add(TicketLabel);
         ButtonPanel.add(RestaurantLabel);
+        ButtonPanel.add(BeautyLabel);
 
         // 패널 추가
         CategoryPanel.add(ButtonPanel);
         CategoryPanel.add(ProductPanel);
         CategoryPanel.add(PagePanel);
     }
+
+    public void setPanel(CategoryPanelGUI categoryPanelGUI){
+        this.categoryPanelGUI = categoryPanelGUI;
+    }
+
+
 }
