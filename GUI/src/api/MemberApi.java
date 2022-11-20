@@ -1,26 +1,28 @@
 package api;
 
 import entity.Member;
+import ip.Host;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-public class SignUpApi {
-    public SignUpApi(Member member) {
-//        JSONObject jsonObject = new JSONObject();
-//        JSONArray jsonArray = new JSONArray();
+public class MemberApi {
+    private final static String HOST = Host.getHost();
 
+    public static void signUp(Member member) {
         JSONObject data = new JSONObject();
-//        Map data = new LinkedHashMap();
-//
+
         data.put("memberId", member.getId());
         data.put("memberPassword", member.getPassword());
         data.put("memberName", member.getName());
@@ -28,17 +30,10 @@ public class SignUpApi {
         data.put("memberAge", member.getAge());
 
         String jsonType = JSONValue.toJSONString(data);
-
-        /*String jsonType = "{\"memberId\" : \"" + member.getId()+"\", "
-                + "\"memberPassword\" : \"" + member.getPassword()+"\", "
-                + "\"memberName\" : \"" + member.getName()+"\", "
-                + "\"memberPhone\" : \"" + member.getPhone()+"\", "
-                +"\"memberAge\" : " + member.getAge()+"}";*/
-
         System.out.println(jsonType);
 
         try {
-            String hostUrl = "http://localhost:8080/member/signup";
+            String hostUrl = HOST + "/member/signup";
             HttpURLConnection conn = null;
 
             URL url = new URL(hostUrl);
@@ -53,19 +48,6 @@ public class SignUpApi {
             OutputStream os = conn.getOutputStream();
             os.write(jsonType.getBytes(StandardCharsets.UTF_8));
             os.flush();
-
-            /*OutputStream outputStream = conn.getOutputStream();
-            byte[] input = jsonType.getBytes("utf-8");
-            outputStream.write(input, 0, input.length);
-            outputStream.flush();
-            outputStream.close();*/
-
-//            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-            /*bw.write(jsonType);
-            bw.flush();
-            bw.close();*/
-//            outputStream.write(jsonType.getBytes("utf-8"));
-//            outputStream.close();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String returnMsg = br.readLine();
@@ -91,9 +73,51 @@ public class SignUpApi {
         }
     }
 
-    /*public static void main(String[] args) {
-        Member member = new Member(1L, "jcwsdfefasdv", "jcw1234", "지찬우", "010-9517-1530", 23);
+    public static void login(String id, String password) {
+        try{
+            String hostUrl = HOST + "/user/"+id+"?"+"password="+password;
+            System.out.println(hostUrl);
+            HttpURLConnection conn = null;
 
-        new SignUpApi(member);
-    }*/
+            URL url = new URL(hostUrl);
+            conn = (HttpURLConnection)url.openConnection();
+
+            conn.setRequestMethod("GET");
+            conn.setConnectTimeout(3000);
+            conn.setRequestProperty("Accept", "application/json; utf-8");
+
+            int responseCode = conn.getResponseCode();
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuffer sb = new StringBuffer();
+            String inputLine;
+
+            while ((inputLine = br.readLine()) != null) {
+                sb.append(inputLine);
+            }
+            br.close();
+
+            String response = sb.toString();
+            System.out.println(response);
+
+            JSONParser jp = new JSONParser();
+
+            Object result = jp.parse(response);
+
+            if (result instanceof JSONObject) {
+                JSONObject data = (JSONObject) result;
+//                Member member = new Member(data.get("memberId"), data.get("memberPassword"), data.get("memberName"), data.get("memberPhone"), data.get("memberAge"));
+//                AuthMember auth = new AuthMember(member);
+            }
+
+        } catch (ProtocolException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

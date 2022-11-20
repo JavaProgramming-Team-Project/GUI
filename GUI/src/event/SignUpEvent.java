@@ -1,6 +1,6 @@
 package event;
 
-import api.SignUpApi;
+import api.MemberApi;
 import entity.Member;
 import ui.MainPageGUI;
 
@@ -34,9 +34,9 @@ public class SignUpEvent implements ActionListener {
             System.out.println("모든 항목을 입력하세요!");
         }
         else {
-            member = new Member(1L, idField.getText(), passwordField.getText(), nameField.getText(),
+            member = new Member(idField.getText(), passwordField.getText(), nameField.getText(),
                     phoneField.getText(), Integer.parseInt(ageField.getText()));
-            new SignUpApi(member);
+            MemberApi.signUp(member);
             signUpFrame.dispose();
             new MainPageGUI();
         }
