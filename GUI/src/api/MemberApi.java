@@ -1,7 +1,9 @@
 package api;
 
+import dto.LoginDto;
 import entity.Member;
 import ip.Host;
+import login.LoginMember;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
@@ -20,14 +22,17 @@ import java.nio.charset.StandardCharsets;
 public class MemberApi {
     private final static String HOST = Host.getHost();
 
+    /**
+     * 회원가입
+     */
     public static void signUp(Member member) {
         JSONObject data = new JSONObject();
 
         data.put("memberId", member.getId());
-        data.put("memberPassword", member.getPassword());
-        data.put("memberName", member.getName());
-        data.put("memberPhone", member.getPhone());
-        data.put("memberAge", member.getAge());
+        data.put("password", member.getPassword());
+        data.put("name", member.getName());
+        data.put("phone", member.getPhone());
+        data.put("age", member.getAge());
 
         String jsonType = JSONValue.toJSONString(data);
         System.out.println(jsonType);
@@ -43,7 +48,7 @@ public class MemberApi {
             conn.setConnectTimeout(3000);
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
 
-            conn.setDoOutput(true);
+            conn.setDoOutput(true); //POST
 
             OutputStream os = conn.getOutputStream();
             os.write(jsonType.getBytes(StandardCharsets.UTF_8));
@@ -73,9 +78,12 @@ public class MemberApi {
         }
     }
 
-    public static void login(String id, String password) {
+    /**
+     * 로그인
+     */
+    public static void login(LoginDto loginDto) {
         try{
-            String hostUrl = HOST + "/user/"+id+"?"+"password="+password;
+            String hostUrl = HOST + "/user/" + loginDto.getMemberId() + "?" + "password=" + loginDto.getPassword();
             System.out.println(hostUrl);
             HttpURLConnection conn = null;
 
@@ -106,8 +114,10 @@ public class MemberApi {
 
             if (result instanceof JSONObject) {
                 JSONObject data = (JSONObject) result;
-//                Member member = new Member(data.get("memberId"), data.get("memberPassword"), data.get("memberName"), data.get("memberPhone"), data.get("memberAge"));
-//                AuthMember auth = new AuthMember(member);
+                Member member = new Member((String) data.get("memberId"), (String) data.get("password")
+                        , (String) data.get("name"), (String) data.get("phone"), (Integer) data.get("age"));
+
+                LoginMember.setLoginMember(member);
             }
 
         } catch (ProtocolException e) {
