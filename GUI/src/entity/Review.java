@@ -10,6 +10,6 @@ public class Review {
     private String date;
 
     public Review(){
-        
+
     }
 }
