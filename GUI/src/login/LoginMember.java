@@ -23,4 +23,8 @@ public class LoginMember {
     public static void setLoginMember(Member member) {
         LoginMember.member = member;
     }
+
+    public static Member getLoginMember() {
+        return member;
+    }
 }
