@@ -1,5 +1,7 @@
 package event;
 
+import api.MemberApi;
+import dto.LoginDto;
 import entity.Member;
 import ui.LoginGUI;
 import ui.MainPageGUI;
@@ -31,14 +33,13 @@ public class LoginEvent extends JFrame implements ActionListener {
                     EventCheck = false;
                 }
                 else{
-                    // 허허
                 }
 
             }
 
             else {
-                // 로그인 관련 API 필요
-                // 추가 전 임시 구문 사용
+                LoginDto loginDto = new LoginDto(idField.getText(),passwordField.getText());
+                MemberApi.login(loginDto);
                 jframe.dispose();
                 new MainPageGUI();
             }
