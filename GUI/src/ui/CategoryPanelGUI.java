@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.MouseListener;
 
 public class CategoryPanelGUI {
+    // 컬러 세팅
+    Color SoftBlue;
     public CategoryPanelGUI categoryPanelGUI;
     public CategoryPageEvent categoryPageEvent = new CategoryPageEvent();
     // 패널 세팅
@@ -30,7 +32,7 @@ public class CategoryPanelGUI {
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
         Color LightGray = new Color(0xF6F6F6);
-        Color SoftBlue = new Color(0xB8E9FF);
+        SoftBlue = new Color(0xB8E9FF);
 
         // 패널 구문
         CategoryPanel = new JPanel();
@@ -129,6 +131,7 @@ public class CategoryPanelGUI {
         ButtonPanel.add(RestaurantLabel);
         ButtonPanel.add(BeautyLabel);
 
+
         // 패널 추가
         CategoryPanel.add(ButtonPanel);
         CategoryPanel.add(ProductPanel);
@@ -160,5 +163,21 @@ public class CategoryPanelGUI {
         TicketLabel.setOpaque(false);
         ShowLabel.setOpaque(false);
         LeisureLabel.setOpaque(false);
+    }
+
+    public void setColor(){
+        StayLabel.setBackground(SoftBlue);
+        ShowLabel.setBackground(SoftBlue);
+        BeautyLabel.setBackground(SoftBlue);
+        RestaurantLabel.setBackground(SoftBlue);
+        DisplayLabel.setBackground(SoftBlue);
+        FestivalLabel.setBackground(SoftBlue);
+        TicketLabel.setBackground(SoftBlue);
+        LeisureLabel.setBackground(SoftBlue);
+    }
+
+    public void Convenience(){
+        Remove_highlights();
+        setColor();
     }
 }

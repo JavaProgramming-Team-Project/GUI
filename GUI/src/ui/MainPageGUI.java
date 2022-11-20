@@ -332,50 +332,50 @@ public class MainPageGUI extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 if(e.getSource() == StayPanel){
                     CancelVisit();
-                    categoryPanelGUI.Remove_highlights();
+                    categoryPanelGUI.Convenience();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.StayLabel.setOpaque(true);
                 }
 
                 else if (e.getSource() == leisurePanel) {
                     CancelVisit();
-                    categoryPanelGUI.Remove_highlights();
+                    categoryPanelGUI.Convenience();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.LeisureLabel.setOpaque(true);
                 }
                 else if (e.getSource() == FestivalPanel) {
                     CancelVisit();
-                    categoryPanelGUI.Remove_highlights();
+                    categoryPanelGUI.Convenience();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.FestivalLabel.setOpaque(true);
                 }
                 else if (e.getSource() == ShowPanel) {
                     CancelVisit();
-                    categoryPanelGUI.Remove_highlights();
+                    categoryPanelGUI.Convenience();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.ShowLabel.setOpaque(true);
                 }
                 else if (e.getSource() == DisplayPanel) {
                     CancelVisit();
-                    categoryPanelGUI.Remove_highlights();
+                    categoryPanelGUI.Convenience();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.DisplayLabel.setOpaque(true);
                 }
                 else if (e.getSource() == TicketPanel) {
                     CancelVisit();
-                    categoryPanelGUI.Remove_highlights();
+                    categoryPanelGUI.Convenience();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.TicketLabel.setOpaque(true);
                 }
                 else if (e.getSource() == RestaurantPanel) {
                     CancelVisit();
-                    categoryPanelGUI.Remove_highlights();
+                    categoryPanelGUI.Convenience();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.RestaurantLabel.setOpaque(true);
                 }
                 else if (e.getSource() == BeautyPanel) {
                     CancelVisit();
-                    categoryPanelGUI.Remove_highlights();
+                    categoryPanelGUI.Convenience();
                     CategoryPanel.setVisible(true);
                     categoryPanelGUI.BeautyLabel.setOpaque(true);
                 }
