@@ -12,6 +12,7 @@ import static ui.Function.imageSetSize;
 
 public class MainPageGUI extends JFrame{
     public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
+    public CategoryPanelGUI categoryPanelGUI = new CategoryPanelGUI();
     // 이벤트 관련 패널
     private JLabel MyPageLabel;
     private JLabel MainLabel;
@@ -21,6 +22,7 @@ public class MainPageGUI extends JFrame{
 
     private JPanel MyPagePanel;
     private JPanel MainPagePanel;
+    private JPanel CategoryPanel;
     private JPanel HeadPanel; // 헤드패널은 계속 고정됨,
     private JPanel CategoryIconPanel; // 메인화면 카테고리 패널
     private JPanel BannerPanel; // 가운데 이벤트 패널..?
@@ -157,6 +159,12 @@ public class MainPageGUI extends JFrame{
         BeautyPanel.setLayout(null);
         BeautyPanel.setBounds(970,10,100,120);
         BeautyPanel.setBackground(Color.white);
+
+        CategoryPanel = categoryPanelGUI.CategoryPanel;
+        CategoryPanel.setLayout(null);
+        CategoryPanel.setBounds(0,70,1300,680);
+        CategoryPanel.setBackground(Color.white);
+        CategoryPanel.setVisible(true);
 
         // 라벨
         JLabel TitleNameLabel = new JLabel("EveryBook");
@@ -315,8 +323,9 @@ public class MainPageGUI extends JFrame{
         MainPagePanel.add(recommendPanel);
 
         ct.add(HeadPanel);
-        ct.add(MainPagePanel);
-        ct.add(MyPagePanel);
+        //ct.add(MainPagePanel);
+        //ct.add(MyPagePanel);
+        ct.add(CategoryPanel);
 
         setVisible(true);
         setSize(1300,750);
