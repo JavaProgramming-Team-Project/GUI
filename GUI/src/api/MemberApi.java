@@ -114,19 +114,23 @@ public class MemberApi {
 
             if (result instanceof JSONObject) {
                 JSONObject data = (JSONObject) result;
-                Member member = new Member((String) data.get("memberId"), (String) data.get("password")
+                Member member = new Member((Long) data.get("memberId"), (String) data.get("id"), (String) data.get("password")
                         , (String) data.get("name"), (String) data.get("phone"), (Integer) data.get("age"));
 
                 LoginMember.setLoginMember(member);
             }
 
         } catch (ProtocolException e) {
+            System.out.println("ProtocolException");
             throw new RuntimeException(e);
         } catch (MalformedURLException e) {
+            System.out.println("MalformedURLException");
             throw new RuntimeException(e);
         } catch (IOException e) {
+            System.out.println("IOException");
             throw new RuntimeException(e);
         } catch (ParseException e) {
+            System.out.println("ParseException");
             throw new RuntimeException(e);
         }
     }
