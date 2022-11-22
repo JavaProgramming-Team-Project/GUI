@@ -1,88 +1,89 @@
 package entity;
 
 public class Item {
-    private Long ItemId;
-    private String[] Category;
-    private String Name;
-    private String Body;
-    private String Phone;
-    private String Price;
-    private String[] Picture;
-    private String Address;
+    private Long itemId;
 
-    public Item(Long ItemId, String[] Category, String name, String body, String Phone, String Price, String[] Picture,
-                String Address){
-        this.ItemId = ItemId;
-        this.Category = Category;
-        this.Name = name;
-        this.Body = body;
-        this.Phone = Phone;
-        this.Price = Price;
-        this.Picture = Picture;
-        this.Address = Address;
+    private String itemName;
+    private String itemBody;
+    private int itemPrice;
+    private String itemAddress;
+    private String itemCategory;
+    private String itemPhone;
+    private String itemImage;
+
+    public Item(Long itemId, String itemName, String itemBody, int itemPrice
+            , String itemAddress, String itemCategory, String itemPhone, String itemImage) {
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.itemBody = itemBody;
+        this.itemPrice = itemPrice;
+        this.itemAddress = itemAddress;
+        this.itemCategory = itemCategory;
+        this.itemPhone = itemPhone;
+        this.itemImage = itemImage;
     }
 
     public Long getItemId() {
-        return ItemId;
+        return itemId;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public String getItemBody() {
+        return itemBody;
+    }
+
+    public int getItemPrice() {
+        return itemPrice;
+    }
+
+    public String getItemAddress() {
+        return itemAddress;
+    }
+
+    public String getItemCategory() {
+        return itemCategory;
+    }
+
+    public String getItemPhone() {
+        return itemPhone;
+    }
+
+    public String getItemImage() {
+        return itemImage;
     }
 
     public void setItemId(Long itemId) {
-        ItemId = itemId;
+        this.itemId = itemId;
     }
 
-    public String getAddress() {
-        return Address;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    public void setAddress(String address) {
-        Address = address;
+    public void setItemBody(String itemBody) {
+        this.itemBody = itemBody;
     }
 
-    public String getBody() {
-        return Body;
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
     }
 
-    public void setBody(String body) {
-        Body = body;
+    public void setItemAddress(String itemAddress) {
+        this.itemAddress = itemAddress;
     }
 
-    public String[] getCategory() {
-        return Category;
+    public void setItemCategory(String itemCategory) {
+        this.itemCategory = itemCategory;
     }
 
-    public void setCategory(String []category) {
-        Category = category;
+    public void setItemPhone(String itemPhone) {
+        this.itemPhone = itemPhone;
     }
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
-
-    public String getPrice() {
-        return Price;
-    }
-
-    public void setPicture(String[] picture) {
-        Picture = picture;
-    }
-
-    public String[] getPicture() {
-        return Picture;
-    }
-
-    public void setPrice(String price) {
-        Price = price;
+    public void setItemImage(String itemImage) {
+        this.itemImage = itemImage;
     }
 }

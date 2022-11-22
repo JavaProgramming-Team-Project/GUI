@@ -8,8 +8,8 @@ public class Member {
     private String phone;
     private int age;
 
-    public Member(String id, String password, String name, String phone, int age) {
-        this.memberId = 0L;
+    public Member(Long memberId, String id, String password, String name, String phone, int age) {
+        this.memberId = memberId;
         this.id = id;
         this.password = password;
         this.name = name;
@@ -25,36 +25,40 @@ public class Member {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public int getAge() {
         return age;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setAge(int age) {
