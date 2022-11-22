@@ -34,7 +34,7 @@ public class SignUpEvent implements ActionListener {
             System.out.println("모든 항목을 입력하세요!");
         }
         else {
-            member = new Member(0L, idField.getText(), passwordField.getText(), nameField.getText(),
+            member = new Member(idField.getText(), passwordField.getText(), nameField.getText(),
                     phoneField.getText(), Integer.parseInt(ageField.getText()));
             MemberApi.signUp(member);
             signUpFrame.dispose();

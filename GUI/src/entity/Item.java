@@ -11,9 +11,9 @@ public class Item {
     private String itemPhone;
     private String itemImage;
 
-    public Item(Long itemId, String itemName, String itemBody, int itemPrice
+    public Item(String itemName, String itemBody, int itemPrice
             , String itemAddress, String itemCategory, String itemPhone, String itemImage) {
-        this.itemId = itemId;
+        this.itemId = 0L;
         this.itemName = itemName;
         this.itemBody = itemBody;
         this.itemPrice = itemPrice;

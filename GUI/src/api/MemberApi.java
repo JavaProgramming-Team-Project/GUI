@@ -28,17 +28,17 @@ public class MemberApi {
     public static void signUp(Member member) {
         JSONObject data = new JSONObject();
 
-        data.put("memberId", member.getId());
-        data.put("password", member.getPassword());
-        data.put("name", member.getName());
-        data.put("phone", member.getPhone());
-        data.put("age", member.getAge());
+        data.put("memberId", member.getMemberKey());
+        data.put("password", member.getMemberPassword());
+        data.put("name", member.getMemberName());
+        data.put("phone", member.getMemberPhone());
+        data.put("age", member.getMemberAge());
 
         String jsonType = JSONValue.toJSONString(data);
         System.out.println(jsonType);
 
         try {
-            String hostUrl = HOST + "/member/signup";
+            String hostUrl = HOST + "/user/signup";
             HttpURLConnection conn = null;
 
             URL url = new URL(hostUrl);
@@ -84,7 +84,6 @@ public class MemberApi {
     public static void login(LoginDto loginDto) {
         try{
             String hostUrl = HOST + "/user/" + loginDto.getMemberId() + "?" + "password=" + loginDto.getPassword();
-            System.out.println(hostUrl);
             HttpURLConnection conn = null;
 
             URL url = new URL(hostUrl);
@@ -97,25 +96,24 @@ public class MemberApi {
             int responseCode = conn.getResponseCode();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuffer sb = new StringBuffer();
+            StringBuffer response = new StringBuffer();
             String inputLine;
 
             while ((inputLine = br.readLine()) != null) {
-                sb.append(inputLine);
+                response.append(inputLine);
             }
             br.close();
 
-            String response = sb.toString();
             System.out.println(response);
 
             JSONParser jp = new JSONParser();
 
-            Object result = jp.parse(response);
+            Object result = jp.parse(response.toString());
 
             if (result instanceof JSONObject) {
                 JSONObject data = (JSONObject) result;
-                Member member = new Member((Long) data.get("memberId"), (String) data.get("id"), (String) data.get("password")
-                        , (String) data.get("name"), (String) data.get("phone"), (Integer) data.get("age"));
+                Member member = new Member((String) data.get("memberId"), (String) data.get("memberPassword")
+                        , (String) data.get("memberName"), (String) data.get("memberPhone"), (Integer) data.get("memberAge"));
 
                 LoginMember.setLoginMember(member);
             }
@@ -134,4 +132,6 @@ public class MemberApi {
             throw new RuntimeException(e);
         }
     }
+
+
 }
