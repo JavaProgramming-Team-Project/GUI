@@ -10,9 +10,12 @@ import java.awt.event.MouseListener;
 import static ui.Function.imageSetSize;
 
 public class MainPageGUI extends JFrame{
+    public int number = 0;
     public MainPageEvent mainPageEvent;
     public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
     public CategoryPanelGUI categoryPanelGUI = new CategoryPanelGUI();
+    public HeadPanel headPanel;
+    public MainPage_ItemPanel mainPage_itemPanel;
     // 이벤트 관련 패널
     private JLabel MyPageLabel;
     private JLabel MainLabel;
@@ -26,7 +29,7 @@ public class MainPageGUI extends JFrame{
     private JPanel HeadPanel; // 헤드패널은 계속 고정됨,
     private JPanel CategoryIconPanel; // 메인화면 카테고리 패널
     private JPanel BannerPanel; // 가운데 이벤트 패널..?
-    private JPanel recommendPanel; // 상품추천 패널
+    private JPanel ItemPanel; // 상품추천 패널
 
     // 카테고리 관련 패널
 
@@ -51,8 +54,6 @@ public class MainPageGUI extends JFrame{
         Color SoftBlue = new Color(0xB8E9FF);
 
         // 아이콘
-        ImageIcon MagnifierIcon = new ImageIcon("src/Icon//돋보기.png");
-        MagnifierIcon = imageSetSize(MagnifierIcon,40,40);
 
         ImageIcon BannerIcon = new ImageIcon("src/Icon//배너.png");
         BannerIcon = imageSetSize(BannerIcon,1300,310);
@@ -86,7 +87,8 @@ public class MainPageGUI extends JFrame{
         ct.setLayout(null);
         ct.setBackground(LightGray);
 
-        HeadPanel = new JPanel();
+        headPanel = new HeadPanel();
+        HeadPanel = headPanel.HeadPanel;
         HeadPanel.setLayout(null);
         HeadPanel.setBounds(0,0,1300,70);
         HeadPanel.setBackground(HeaderColor);
@@ -101,10 +103,11 @@ public class MainPageGUI extends JFrame{
         BannerPanel.setBounds(0,135,1300,300);
         BannerPanel.setBackground(Color.LIGHT_GRAY);
 
-        recommendPanel = new JPanel();
-        recommendPanel.setLayout(null);
-        recommendPanel.setBounds(0,435,1300,245);
-        recommendPanel.setBackground(Color.WHITE);
+        mainPage_itemPanel = new MainPage_ItemPanel();
+        ItemPanel = mainPage_itemPanel.ItemPanel;
+        ItemPanel.setLayout(null);
+        ItemPanel.setBounds(0,435,1300,245);
+        ItemPanel.setBackground(Color.WHITE);
 
         MainPagePanel = new JPanel();
         MainPagePanel.setLayout(null);
@@ -169,9 +172,6 @@ public class MainPageGUI extends JFrame{
         TitleNameLabel.setFont(TitleNameLabel.getFont().deriveFont(38.0f));
         TitleNameLabel.setBounds(80,8,200,50);
         TitleNameLabel.setForeground(Color.WHITE);
-
-        JLabel MagnifierLabel = new JLabel(MagnifierIcon);
-        MagnifierLabel.setBounds(820,-13,50,100);
 
         JLabel SearchLabel = new JLabel("검색");
         SearchLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -273,13 +273,6 @@ public class MainPageGUI extends JFrame{
         BeautyLabel.setForeground(Color.gray);
 
         // 패널 추가 ---------------------------------------------------------
-        HeadPanel.add(TitleNameLabel);
-        HeadPanel.add(MagnifierLabel);
-        HeadPanel.add(SearchLabel);
-        HeadPanel.add(MyPageLabel);
-        HeadPanel.add(MainLabel);
-        HeadPanel.add(LogoutButton);
-
         StayPanel.add(Accommodation);
         StayPanel.add(StayLabel);
 
@@ -317,7 +310,7 @@ public class MainPageGUI extends JFrame{
 
         MainPagePanel.add(CategoryIconPanel);
         MainPagePanel.add(BannerPanel);
-        MainPagePanel.add(recommendPanel);
+        MainPagePanel.add(ItemPanel);
 
         ct.add(HeadPanel);
         ct.add(MainPagePanel);
@@ -325,9 +318,6 @@ public class MainPageGUI extends JFrame{
         ct.add(CategoryPanel);
 
         // 이벤트 연동 -------------------------------------------------------
-
-        categoryPanelGUI.setPanel(categoryPanelGUI);
-
         StayPanel.addMouseListener(new MyMouseListener());
         leisurePanel.addMouseListener(new MyMouseListener());
         FestivalPanel.addMouseListener(new MyMouseListener());
@@ -336,9 +326,9 @@ public class MainPageGUI extends JFrame{
         TicketPanel.addMouseListener(new MyMouseListener());
         RestaurantPanel.addMouseListener(new MyMouseListener());
         BeautyPanel.addMouseListener(new MyMouseListener());
-        MyPageLabel.addMouseListener(new MyMouseListener());
-        MainLabel.addMouseListener(new MyMouseListener());
-        LogoutButton.addMouseListener(new MyMouseListener());
+        headPanel.LogoutButton.addMouseListener(new MyMouseListener());
+        headPanel.MainLabel.addMouseListener(new MyMouseListener());
+        headPanel.MyPageLabel.addMouseListener(new MyMouseListener());
 
         setVisible(true);
         setSize(1300,750);
@@ -351,63 +341,47 @@ public class MainPageGUI extends JFrame{
         @Override
         public void mouseClicked(MouseEvent e) {
             if(e.getSource() == StayPanel){
-                CancelVisit();
-                categoryPanelGUI.Convenience();
-                CategoryPanel.setVisible(true);
+                Category_Conv();
                 categoryPanelGUI.StayLabel.setOpaque(true);
             }
 
             else if (e.getSource() == leisurePanel) {
-                CancelVisit();
-                categoryPanelGUI.Convenience();
-                CategoryPanel.setVisible(true);
+                Category_Conv();
                 categoryPanelGUI.LeisureLabel.setOpaque(true);
             }
             else if (e.getSource() == FestivalPanel) {
-                CancelVisit();
-                categoryPanelGUI.Convenience();
-                CategoryPanel.setVisible(true);
+                Category_Conv();
                 categoryPanelGUI.FestivalLabel.setOpaque(true);
             }
             else if (e.getSource() == ShowPanel) {
-                CancelVisit();
-                categoryPanelGUI.Convenience();
-                CategoryPanel.setVisible(true);
+                Category_Conv();
                 categoryPanelGUI.ShowLabel.setOpaque(true);
             }
             else if (e.getSource() == DisplayPanel) {
-                CancelVisit();
-                categoryPanelGUI.Convenience();
-                CategoryPanel.setVisible(true);
+                Category_Conv();
                 categoryPanelGUI.DisplayLabel.setOpaque(true);
             }
             else if (e.getSource() == TicketPanel) {
-                CancelVisit();
-                categoryPanelGUI.Convenience();
-                CategoryPanel.setVisible(true);
+                Category_Conv();
                 categoryPanelGUI.TicketLabel.setOpaque(true);
             }
             else if (e.getSource() == RestaurantPanel) {
-                CancelVisit();
-                categoryPanelGUI.Convenience();
-                CategoryPanel.setVisible(true);
+                Category_Conv();
                 categoryPanelGUI.RestaurantLabel.setOpaque(true);
             }
             else if (e.getSource() == BeautyPanel) {
-                CancelVisit();
-                categoryPanelGUI.Convenience();
-                CategoryPanel.setVisible(true);
+                Category_Conv();
                 categoryPanelGUI.BeautyLabel.setOpaque(true);
             }
-            else if(e.getSource() == MyPageLabel){
+            else if(e.getSource() == headPanel.MyPageLabel){
                 MainPagePanel.setVisible(false);
                 MyPagePanel.setVisible(true);
             }
-            else if(e.getSource() == MainLabel){
+            else if(e.getSource() == headPanel.MainLabel){
                 MyPagePanel.setVisible(false);
                 MainPagePanel.setVisible(true);
             }
-            else if(e.getSource() == LogoutButton){
+            else if(e.getSource() == headPanel.LogoutButton){
                 dispose();
                 new LoginGUI();
             }
@@ -440,10 +414,10 @@ public class MainPageGUI extends JFrame{
         CategoryPanel.setVisible(false);
     }
 
-    public void Display(){
-    }
-
-    public void DisplayItem(){
+    public void Category_Conv(){
+        CancelVisit();
+        categoryPanelGUI.Convenience();
+        CategoryPanel.setVisible(true);
     }
 
     public static void main(String[] args){
