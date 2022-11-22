@@ -163,7 +163,7 @@ public class MainPageGUI extends JFrame{
         CategoryPanel = categoryPanelGUI.CategoryPanel;
         CategoryPanel.setLayout(null);
         CategoryPanel.setBounds(0,70,1300,680);
-        CategoryPanel.setBackground(Color.white);
+        CategoryPanel.setBackground(Color.gray);
         CategoryPanel.setVisible(false);
 
         // 라벨
@@ -415,9 +415,17 @@ public class MainPageGUI extends JFrame{
     }
 
     public void Category_Conv(){
+        ct.remove(CategoryPanel);
+        categoryPanelGUI = new CategoryPanelGUI();
+        CategoryPanel = categoryPanelGUI.CategoryPanel;
+        CategoryPanel.setLayout(null);
+        CategoryPanel.setBounds(0,70,1300,680);
+        CategoryPanel.setBackground(Color.white);
+        ct.add(CategoryPanel);
+
         CancelVisit();
-        categoryPanelGUI.Convenience();
-        categoryPanelGUI.setColor();
+        categoryPanelGUI.Convenience(); // CategoryPanelGUI에 있는 메소드들을 한번에 묶어놓은 것
+        categoryPanelGUI.setColor(); //
         CategoryPanel.setVisible(true);
     }
 
