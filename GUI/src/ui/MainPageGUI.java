@@ -14,7 +14,7 @@ public class MainPageGUI extends JFrame{
     public MainPageEvent mainPageEvent;
     public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
     public CategoryPanelGUI categoryPanelGUI = new CategoryPanelGUI();
-    public HeadPanel headPanel;
+    public MainPage_HeadPanel mainPageHeadPanel;
     public MainPage_ItemPanel mainPage_itemPanel;
     // 이벤트 관련 패널
     private JLabel MyPageLabel;
@@ -87,8 +87,8 @@ public class MainPageGUI extends JFrame{
         ct.setLayout(null);
         ct.setBackground(LightGray);
 
-        headPanel = new HeadPanel();
-        HeadPanel = headPanel.HeadPanel;
+        mainPageHeadPanel = new MainPage_HeadPanel();
+        HeadPanel = mainPageHeadPanel.HeadPanel;
         HeadPanel.setLayout(null);
         HeadPanel.setBounds(0,0,1300,70);
         HeadPanel.setBackground(HeaderColor);
@@ -326,9 +326,9 @@ public class MainPageGUI extends JFrame{
         TicketPanel.addMouseListener(new MyMouseListener());
         RestaurantPanel.addMouseListener(new MyMouseListener());
         BeautyPanel.addMouseListener(new MyMouseListener());
-        headPanel.LogoutButton.addMouseListener(new MyMouseListener());
-        headPanel.MainLabel.addMouseListener(new MyMouseListener());
-        headPanel.MyPageLabel.addMouseListener(new MyMouseListener());
+        mainPageHeadPanel.LogoutButton.addMouseListener(new MyMouseListener());
+        mainPageHeadPanel.MainLabel.addMouseListener(new MyMouseListener());
+        mainPageHeadPanel.MyPageLabel.addMouseListener(new MyMouseListener());
 
         setVisible(true);
         setSize(1300,750);
@@ -373,15 +373,15 @@ public class MainPageGUI extends JFrame{
                 Category_Conv();
                 categoryPanelGUI.BeautyLabel.setOpaque(true);
             }
-            else if(e.getSource() == headPanel.MyPageLabel){
+            else if(e.getSource() == mainPageHeadPanel.MyPageLabel){
                 MainPagePanel.setVisible(false);
                 MyPagePanel.setVisible(true);
             }
-            else if(e.getSource() == headPanel.MainLabel){
+            else if(e.getSource() == mainPageHeadPanel.MainLabel){
                 MyPagePanel.setVisible(false);
                 MainPagePanel.setVisible(true);
             }
-            else if(e.getSource() == headPanel.LogoutButton){
+            else if(e.getSource() == mainPageHeadPanel.LogoutButton){
                 dispose();
                 new LoginGUI();
             }
@@ -417,6 +417,7 @@ public class MainPageGUI extends JFrame{
     public void Category_Conv(){
         CancelVisit();
         categoryPanelGUI.Convenience();
+        categoryPanelGUI.setColor();
         CategoryPanel.setVisible(true);
     }
 

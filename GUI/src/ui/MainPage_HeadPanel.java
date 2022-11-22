@@ -5,12 +5,12 @@ import java.awt.*;
 
 import static ui.Function.imageSetSize;
 
-public class HeadPanel extends JPanel {
+public class MainPage_HeadPanel extends JPanel {
     public JLabel MyPageLabel;
     public JLabel MainLabel;
     public JLabel LogoutButton;
     public JPanel HeadPanel;
-    public HeadPanel(){
+    public MainPage_HeadPanel(){
         HeadPanel = new JPanel();
         HeadPanel.setLayout(null);
         HeadPanel.setBounds(0,0,1300,70);

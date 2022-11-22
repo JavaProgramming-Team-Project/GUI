@@ -169,7 +169,7 @@ public class CategoryPanelGUI {
         TicketLabel.setBackground(SoftBlue);
         LeisureLabel.setBackground(SoftBlue);
     }
-    
+
 
     public void Convenience(){
         Remove_highlights();
