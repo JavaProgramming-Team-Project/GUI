@@ -4,7 +4,6 @@ import event.CategoryPageEvent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 public class CategoryPanelGUI {
     // 컬러 세팅
@@ -28,6 +27,7 @@ public class CategoryPanelGUI {
     public JLabel BeautyLabel;
 
     public CategoryPanelGUI(){
+        categoryPageEvent.setPanel(this);
         // 색 코드
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
@@ -46,14 +46,13 @@ public class CategoryPanelGUI {
 
         ProductPanel = new JPanel();
         ProductPanel.setLayout(null);
-        ProductPanel.setBackground(Color.GRAY);
+        ProductPanel.setBackground(Color.WHITE);
         ProductPanel.setBounds(100,70,1100,500);
 
         PagePanel = new JPanel();
         PagePanel.setLayout(null);
         PagePanel.setBackground(Color.CYAN);
         PagePanel.setBounds(100,570,1100,70);
-
 
         // 라벨 구문
         StayLabel = new JLabel("숙소");
@@ -149,11 +148,6 @@ public class CategoryPanelGUI {
         BeautyLabel.addMouseListener(categoryPageEvent);
     }
 
-    public void setPanel(CategoryPanelGUI categoryPanelGUI){
-        this.categoryPanelGUI = categoryPanelGUI;
-        categoryPageEvent.setPanel(categoryPanelGUI);
-    }
-
     public void Remove_highlights(){
         StayLabel.setOpaque(false);
         BeautyLabel.setOpaque(false);
@@ -175,9 +169,9 @@ public class CategoryPanelGUI {
         TicketLabel.setBackground(SoftBlue);
         LeisureLabel.setBackground(SoftBlue);
     }
+    
 
     public void Convenience(){
         Remove_highlights();
-        setColor();
     }
 }
