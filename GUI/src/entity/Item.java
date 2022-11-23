@@ -1,7 +1,7 @@
 package entity;
 
 public class Item {
-    private Long itemId;
+    private Long itemKey;
 
     private String itemName;
     private String itemBody;
@@ -11,9 +11,9 @@ public class Item {
     private String itemPhone;
     private String itemImage;
 
-    public Item(String itemName, String itemBody, int itemPrice
+    public Item(Long itemKey, String itemName, String itemBody, int itemPrice
             , String itemAddress, String itemCategory, String itemPhone, String itemImage) {
-        this.itemId = 0L;
+        this.itemKey = itemKey;
         this.itemName = itemName;
         this.itemBody = itemBody;
         this.itemPrice = itemPrice;
@@ -23,8 +23,8 @@ public class Item {
         this.itemImage = itemImage;
     }
 
-    public Long getItemId() {
-        return itemId;
+    public Long getItemKey() {
+        return itemKey;
     }
 
     public String getItemName() {
@@ -55,8 +55,8 @@ public class Item {
         return itemImage;
     }
 
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
+    public void setItemKey(Long itemKey) {
+        this.itemKey = itemKey;
     }
 
     public void setItemName(String itemName) {

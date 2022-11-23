@@ -20,22 +20,27 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class MemberApi {
+
+    public static void main(String[] args) {
+        login(new LoginDto("jjjj", "jjj"));
+        System.out.println(LoginMember.getLoginMember().getMemberKey());
+    }
+
     private final static String HOST = Host.getHost();
 
-    /**
+    /** ---------------------------------------------------------------------------------------------------
      * 회원가입
      */
     public static void signUp(Member member) {
         JSONObject data = new JSONObject();
 
-        data.put("memberId", member.getMemberKey());
-        data.put("password", member.getMemberPassword());
-        data.put("name", member.getMemberName());
-        data.put("phone", member.getMemberPhone());
-        data.put("age", member.getMemberAge());
+        data.put("memberId", member.getMemberId());
+        data.put("memberPassword", member.getMemberPassword());
+        data.put("memberName", member.getMemberName());
+        data.put("memberPhone", member.getMemberPhone());
+        data.put("memberAge", member.getMemberAge());
 
         String jsonType = JSONValue.toJSONString(data);
-        System.out.println(jsonType);
 
         try {
             String hostUrl = HOST + "/user/signup";
@@ -66,6 +71,7 @@ public class MemberApi {
             } else {
                 System.out.println(responseCode + " : 응답 코드");
             }
+
         } catch (ProtocolException e) {
             System.out.println("ProtocolException");
             throw new RuntimeException(e);
@@ -78,7 +84,7 @@ public class MemberApi {
         }
     }
 
-    /**
+    /**---------------------------------------------------------------------------------------------------
      * 로그인
      */
     public static void login(LoginDto loginDto) {
@@ -94,6 +100,13 @@ public class MemberApi {
             conn.setRequestProperty("Accept", "application/json; utf-8");
 
             int responseCode = conn.getResponseCode();
+            if (responseCode == 400) {
+                System.out.println("400 : 명령 실행 오류");
+            } else if (responseCode == 500) {
+                System.out.println("500 : 서버 에러");
+            } else {
+                System.out.println(responseCode + " : 응답 코드");
+            }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             StringBuffer response = new StringBuffer();
@@ -104,16 +117,14 @@ public class MemberApi {
             }
             br.close();
 
-            System.out.println(response);
-
             JSONParser jp = new JSONParser();
 
             Object result = jp.parse(response.toString());
 
             if (result instanceof JSONObject) {
                 JSONObject data = (JSONObject) result;
-                Member member = new Member((String) data.get("memberId"), (String) data.get("memberPassword")
-                        , (String) data.get("memberName"), (String) data.get("memberPhone"), (Integer) data.get("memberAge"));
+                Member member = new Member((Long) data.get("memberKey"), (String) data.get("memberId"), (String) data.get("memberPassword")
+                        , (String) data.get("memberName"), (String) data.get("memberPhone"), Integer.parseInt(String.valueOf(data.get("memberAge"))));
 
                 LoginMember.setLoginMember(member);
             }
@@ -132,6 +143,4 @@ public class MemberApi {
             throw new RuntimeException(e);
         }
     }
-
-
 }

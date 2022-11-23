@@ -1,27 +1,27 @@
 package entity;
 
 public class Book {
-    private Long bookId;
+    private Long bookKey;
 
     private Long memberKey;
     private Long itemKey;
     private String bookDate; //예약 시점 일자
     private String itemDate; //상품 예약일
 
-    public Book(Long bookId, Long memberKey, Long itemKey, String bookDate, String itemDate) {
-        this.bookId = bookId;
+    public Book(Long bookKey, Long memberKey, Long itemKey, String bookDate, String itemDate) {
+        this.bookKey = bookKey;
         this.memberKey = memberKey;
         this.itemKey = itemKey;
         this.bookDate = bookDate;
         this.itemDate = itemDate;
     }
 
-    public Long getBookId() {
-        return bookId;
+    public Long getBookKey() {
+        return bookKey;
     }
 
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
+    public void setBookKey(Long bookKey) {
+        this.bookKey = bookKey;
     }
 
     public Long getMemberKey() {

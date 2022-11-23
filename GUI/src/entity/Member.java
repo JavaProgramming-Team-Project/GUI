@@ -8,8 +8,8 @@ public class Member {
     private String memberPhone;
     private int memberAge;
 
-    public Member(String memberId, String memberPassword, String memberName, String memberPhone, int memberAge) {
-        this.memberKey = 0L;
+    public Member(Long memberKey, String memberId, String memberPassword, String memberName, String memberPhone, int memberAge) {
+        this.memberKey = memberKey;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
         this.memberName = memberName;

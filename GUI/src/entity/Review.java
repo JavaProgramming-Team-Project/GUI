@@ -1,45 +1,45 @@
 package entity;
 
 public class Review {
-    private Long reviewId;
+    private Long reviewKey;
 
-    private Long memberId;
-    private Long itemId;
+    private Long memberKey;
+    private Long itemKey;
     private int reviewStar;
     private String reviewBody;
     private String reviewDate;
 
-    public Review(Long reviewId, Long memberId, Long itemId, int reviewStar, String reviewBody, String reviewDate) {
-        this.reviewId = reviewId;
-        this.memberId = memberId;
-        this.itemId = itemId;
+    public Review(Long reviewKey, Long memberKey, Long itemKey, int reviewStar, String reviewBody, String reviewDate) {
+        this.reviewKey = reviewKey;
+        this.memberKey = memberKey;
+        this.itemKey = itemKey;
         this.reviewStar = reviewStar;
         this.reviewBody = reviewBody;
         this.reviewDate = reviewDate;
     }
 
-    public Long getReviewId() {
-        return reviewId;
+    public Long getReviewKey() {
+        return reviewKey;
     }
 
-    public void setReviewId(Long reviewId) {
-        this.reviewId = reviewId;
+    public void setReviewKey(Long reviewKey) {
+        this.reviewKey = reviewKey;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Long getMemberKey() {
+        return memberKey;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setMemberKey(Long memberKey) {
+        this.memberKey = memberKey;
     }
 
-    public Long getItemId() {
-        return itemId;
+    public Long getItemKey() {
+        return itemKey;
     }
 
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
+    public void setItemKey(Long itemKey) {
+        this.itemKey = itemKey;
     }
 
     public int getReviewStar() {
