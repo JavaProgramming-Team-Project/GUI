@@ -23,6 +23,8 @@ public class Item {
         this.itemImage = itemImage;
     }
 
+    public Item(){}
+
     public Long getItemKey() {
         return itemKey;
     }

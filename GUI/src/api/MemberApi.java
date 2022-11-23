@@ -1,13 +1,10 @@
 package api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.LoginDto;
 import entity.Member;
 import ip.Host;
 import login.LoginMember;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,27 +18,13 @@ import java.nio.charset.StandardCharsets;
 
 public class MemberApi {
 
-    public static void main(String[] args) {
-        login(new LoginDto("jjjj", "jjj"));
-        System.out.println(LoginMember.getLoginMember().getMemberKey());
-    }
-
+    private static ObjectMapper mapper = new ObjectMapper();
     private final static String HOST = Host.getHost();
 
     /** ---------------------------------------------------------------------------------------------------
      * 회원가입
      */
     public static void signUp(Member member) {
-        JSONObject data = new JSONObject();
-
-        data.put("memberId", member.getMemberId());
-        data.put("memberPassword", member.getMemberPassword());
-        data.put("memberName", member.getMemberName());
-        data.put("memberPhone", member.getMemberPhone());
-        data.put("memberAge", member.getMemberAge());
-
-        String jsonType = JSONValue.toJSONString(data);
-
         try {
             String hostUrl = HOST + "/user/signup";
             HttpURLConnection conn = null;
@@ -54,6 +37,9 @@ public class MemberApi {
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
 
             conn.setDoOutput(true); //POST
+
+            String jsonType = mapper.writeValueAsString(member);
+            System.out.println(jsonType);
 
             OutputStream os = conn.getOutputStream();
             os.write(jsonType.getBytes(StandardCharsets.UTF_8));
@@ -117,17 +103,8 @@ public class MemberApi {
             }
             br.close();
 
-            JSONParser jp = new JSONParser();
-
-            Object result = jp.parse(response.toString());
-
-            if (result instanceof JSONObject) {
-                JSONObject data = (JSONObject) result;
-                Member member = new Member((Long) data.get("memberKey"), (String) data.get("memberId"), (String) data.get("memberPassword")
-                        , (String) data.get("memberName"), (String) data.get("memberPhone"), Integer.parseInt(String.valueOf(data.get("memberAge"))));
-
-                LoginMember.setLoginMember(member);
-            }
+            Member member = mapper.readValue(response.toString(), Member.class);
+            LoginMember.setLoginMember(member);
 
         } catch (ProtocolException e) {
             System.out.println("ProtocolException");
@@ -137,9 +114,6 @@ public class MemberApi {
             throw new RuntimeException(e);
         } catch (IOException e) {
             System.out.println("IOException");
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
-            System.out.println("ParseException");
             throw new RuntimeException(e);
         }
     }

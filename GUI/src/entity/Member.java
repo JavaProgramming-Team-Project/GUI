@@ -17,6 +17,8 @@ public class Member {
         this.memberAge = memberAge;
     }
 
+    public Member(){}
+
     public Long getMemberKey() {
         return memberKey;
     }

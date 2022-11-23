@@ -1,11 +1,9 @@
 package api;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Item;
 import ip.Host;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,14 +15,8 @@ import java.util.List;
 
 public class ItemApi {
 
-    public static void main(String[] args) {
-        List<Item> list = findItemByName("신라");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getItemName());
-        }
-    }
-
     private final static String HOST = Host.getHost();
+    private static ObjectMapper mapper = new ObjectMapper();
 
     /**---------------------------------------------------------------------------------------------------
      * 카테고리 별 상품 리스트
@@ -33,7 +25,7 @@ public class ItemApi {
      */
     public static List<Item> itemListByCategory(String itemCategory) {
 
-        List<Item> list = new ArrayList<>();
+        List<Item> list;
         try {
             String hostUrl = HOST + "/item/category/"+ URLEncoder.encode(itemCategory, StandardCharsets.UTF_8);
             HttpURLConnection conn = null;
@@ -63,23 +55,13 @@ public class ItemApi {
             }
             br.close();
 
-            JSONParser jp = new JSONParser();
-            JSONArray jsonArray = (JSONArray) jp.parse(response.toString());
-
-            for (int i = 0; i < jsonArray.size(); i++) {
-                JSONObject data = (JSONObject) jsonArray.get(i);
-
-                list.add(new Item((Long) data.get("itemKey"), (String) data.get("itemName"), (String) data.get("itemBody"), Integer.parseInt(String.valueOf(data.get("itemPrice"))), (String) data.get("itemAddress")
-                        , (String) data.get("itemCategory"), (String) data.get("itemPhone"), (String) data.get("itemImage")));
-            }
+            list = mapper.readValue(response.toString(), new TypeReference<List<Item>>() {});
 
         } catch (ProtocolException e) {
             throw new RuntimeException(e);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
             throw new RuntimeException(e);
         }
         return list;
@@ -117,19 +99,14 @@ public class ItemApi {
             }
             br.close();
 
-            JSONParser jp = new JSONParser();
-            JSONObject data = (JSONObject) jp.parse(response.toString());
+            item = mapper.readValue(response.toString(), new TypeReference<>() {});
 
-            item = new Item((Long) data.get("itemKey"), (String) data.get("itemName"), (String) data.get("itemBody"), Integer.parseInt(String.valueOf(data.get("itemPrice"))),
-                    (String) data.get("itemAddress"), (String) data.get("itemCategory"), (String) data.get("itemPhone"), (String) data.get("itemImage"));
 
         } catch (ProtocolException e) {
             throw new RuntimeException(e);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
             throw new RuntimeException(e);
         }
         return item;
@@ -167,22 +144,14 @@ public class ItemApi {
             }
             br.close();
 
-            JSONParser jp = new JSONParser();
-            JSONArray jsonArray = (JSONArray) jp.parse(response.toString());
+            list = mapper.readValue(response.toString(), new TypeReference<>() {
+            });
 
-            for (int i = 0; i < jsonArray.size(); i++) {
-                JSONObject data = (JSONObject) jsonArray.get(i);
-
-                list.add(new Item((Long) data.get("itemKey"), (String) data.get("itemName"), (String) data.get("itemBody"), Integer.parseInt(String.valueOf(data.get("itemPrice"))), (String) data.get("itemAddress")
-                        , (String) data.get("itemCategory"), (String) data.get("itemPhone"), (String) data.get("itemImage")));
-            }
         } catch (ProtocolException e) {
             throw new RuntimeException(e);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
             throw new RuntimeException(e);
         }
         return list;
