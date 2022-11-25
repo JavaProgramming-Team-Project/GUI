@@ -6,12 +6,12 @@ public class LoginMember {
 
     private static Member member;
 
-    private Long memberId;
-    private String id;
-    private String password;
-    private String name;
-    private String phone;
-    private int age;
+    private Long memberKey;
+    private String memberId;
+    private String memberPassword;
+    private String memberName;
+    private String memberPhone;
+    private int memberAge;
 
     private static LoginMember loginMember = new LoginMember();
 

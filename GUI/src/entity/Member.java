@@ -1,67 +1,69 @@
 package entity;
 
 public class Member {
-    private Long memberId;
-    private String id;
-    private String password;
-    private String name;
-    private String phone;
-    private int age;
+    private Long memberKey;
+    private String memberId;
+    private String memberPassword;
+    private String memberName;
+    private String memberPhone;
+    private int memberAge;
 
-    public Member(Long memberId, String id, String password, String name, String phone, int age) {
+    public Member(Long memberKey, String memberId, String memberPassword, String memberName, String memberPhone, int memberAge) {
+        this.memberKey = memberKey;
         this.memberId = memberId;
-        this.id = id;
-        this.password = password;
-        this.name = name;
-        this.phone = phone;
-        this.age = age;
+        this.memberPassword = memberPassword;
+        this.memberName = memberName;
+        this.memberPhone = memberPhone;
+        this.memberAge = memberAge;
     }
 
-    public Long getMemberId() {
+    public Member(){}
+
+    public Long getMemberKey() {
+        return memberKey;
+    }
+
+    public String getMemberId() {
         return memberId;
     }
 
-    public String getId() {
-        return id;
+    public String getMemberPassword() {
+        return memberPassword;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMemberName() {
+        return memberName;
     }
 
-    public String getName() {
-        return name;
+    public String getMemberPhone() {
+        return memberPhone;
     }
 
-    public String getPhone() {
-        return phone;
+    public int getMemberAge() {
+        return memberAge;
     }
 
-    public int getAge() {
-        return age;
+    public void setMemberKey(Long memberKey) {
+        this.memberKey = memberKey;
     }
 
-    public void setMemberId(Long memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMemberPassword(String memberPassword) {
+        this.memberPassword = memberPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMemberPhone(String memberPhone) {
+        this.memberPhone = memberPhone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setMemberAge(int memberAge) {
+        this.memberAge = memberAge;
     }
 }
