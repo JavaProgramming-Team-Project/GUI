@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainPageEvent extends JPanel{
-    Item item;
+    public Item item;
     public String []CategoryList;
     public JPanel ItemPanel;
     public MainPageEvent(){
@@ -25,6 +25,7 @@ public class MainPageEvent extends JPanel{
         ItemPanel.setBackground(SoftBlue);
 
         // 라벨 설정
+
         //JLabel CategoryName = new JLabel("["+CategoryList[0]+"]");
         //CategoryName.setFont(new Font("맑은 고딕",Font.BOLD, 11));
         //CategoryName.setFont(CategoryName.getFont().deriveFont(21.0f));
@@ -40,5 +41,9 @@ public class MainPageEvent extends JPanel{
         //ItemPanel.add(ItemName);
         //ItemPanel.add(Body);
         //ItemPanel.add(Price);
+    }
+
+    public void getItem(Item item){
+        this.item = item;
     }
 }

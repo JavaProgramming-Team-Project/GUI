@@ -12,6 +12,7 @@ public class CategoryPageEvent extends JPanel implements MouseListener {
     Item item;
     public CategoryPanelGUI cgp;
     public CategoryPageEvent(CategoryPanelGUI c){
+        cgp = c;
     }
 
     @Override

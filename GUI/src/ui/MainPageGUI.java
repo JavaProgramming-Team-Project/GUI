@@ -1,5 +1,7 @@
 package ui;
 
+import api.ItemApi;
+import entity.Item;
 import event.MainPageEvent;
 
 import javax.swing.*;
@@ -10,6 +12,10 @@ import java.awt.event.MouseListener;
 import static ui.Function.imageSetSize;
 
 public class MainPageGUI extends JFrame{
+    // 상품 관련
+    public Item item;
+
+    // 패널 및 이벤트 관련
     public MainPageEvent mainPageEvent;
     public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
     public CategoryPanelGUI categoryPanelGUI = new CategoryPanelGUI();
@@ -45,6 +51,8 @@ public class MainPageGUI extends JFrame{
     public Container ct;
 
     public MainPageGUI(){
+        Item item = new Item(216L,"name","Body",
+                1000,"충청남도","식당","01034295935","이미지 주소");
         mainPageEvent = new MainPageEvent();
         // 색상
         Color HeaderColor = new Color(0x58CCFF);
@@ -102,7 +110,7 @@ public class MainPageGUI extends JFrame{
         BannerPanel.setBounds(0,135,1300,300);
         BannerPanel.setBackground(Color.LIGHT_GRAY);
 
-        mainPage_itemPanel = new MainPage_ItemPanel();
+        mainPage_itemPanel = new MainPage_ItemPanel(item);
         ItemPanel = mainPage_itemPanel.ItemPanel;
         ItemPanel.setLayout(null);
         ItemPanel.setBounds(0,435,1300,245);
@@ -341,6 +349,7 @@ public class MainPageGUI extends JFrame{
         public void mouseClicked(MouseEvent e) {
             if(e.getSource() == StayPanel){
                 Category_Conv();
+                //ItemApi.itemListByCategory("숙소");
                 categoryPanelGUI.StayLabel.setOpaque(true);
             }
 
