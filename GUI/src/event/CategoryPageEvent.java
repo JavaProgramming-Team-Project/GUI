@@ -11,11 +11,7 @@ import java.awt.event.MouseListener;
 public class CategoryPageEvent extends JPanel implements MouseListener {
     Item item;
     public CategoryPanelGUI cgp;
-    public CategoryPageEvent(){
-    }
-
-    public void setPanel(CategoryPanelGUI c){
-        cgp = c;
+    public CategoryPageEvent(CategoryPanelGUI c){
     }
 
     @Override
@@ -95,7 +91,7 @@ public class CategoryPageEvent extends JPanel implements MouseListener {
 
     }
 
-    public void getInformation(){
+    public void setItem(){
 
     }
 
