@@ -9,7 +9,7 @@ public class CategoryPanelGUI {
     // 컬러 세팅
     Color SoftBlue;
     public CategoryPanelGUI categoryPanelGUI;
-    public CategoryPageEvent categoryPageEvent = new CategoryPageEvent();
+    public CategoryPageEvent categoryPageEvent;
     // 패널 세팅
     public JPanel CategoryPanel;
     public JPanel ButtonPanel;
@@ -27,7 +27,7 @@ public class CategoryPanelGUI {
     public JLabel BeautyLabel;
 
     public CategoryPanelGUI(){
-        categoryPageEvent.setPanel(this);
+        categoryPageEvent = new CategoryPageEvent(this);
         // 색 코드
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
