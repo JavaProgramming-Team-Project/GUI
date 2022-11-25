@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import static ui.Function.imageSetSize;
 
@@ -17,7 +19,8 @@ public class MainPageGUI extends JFrame{
 
     // 패널 및 이벤트 관련
     public MainPageEvent mainPageEvent;
-    public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
+    public MyPagePanelGUI myPagePanelGUI
+            = new MyPagePanelGUI();
     public CategoryPanelGUI categoryPanelGUI = new CategoryPanelGUI();
     public MainPage_HeadPanel mainPageHeadPanel;
     public MainPage_ItemPanel mainPage_itemPanel;
@@ -51,8 +54,24 @@ public class MainPageGUI extends JFrame{
     public Container ct;
 
     public MainPageGUI(){
+        List<Item> list2 = new ArrayList<>();
+        //ItemApi.itemListByCategory("하이");
         Item item = new Item(216L,"name","Body",
                 1000,"충청남도","식당","01034295935","이미지 주소");
+        Item item2 = new Item(216L,"2name","2Body",
+                1000,"2충청남도","2식당","201034295935","2이미지 주소");
+        Item item3 = new Item(216L,"3name","3Body",
+                1000,"3충청남도","3식당","301034295935","3이미지 주소");
+        Item item4 = new Item(216L,"4name","4Body",
+                1000,"4충청남도","4식당","401034295935","4이미지 주소");
+        Item item5 = new Item(216L,"5name","5Body",
+                1000,"5충청남도","5식당","501034295935","5이미지 주소");
+        list2.add(item);
+        list2.add(item2);
+        list2.add(item3);
+        list2.add(item4);
+        list2.add(item5);
+
         mainPageEvent = new MainPageEvent();
         // 색상
         Color HeaderColor = new Color(0x58CCFF);
@@ -110,7 +129,7 @@ public class MainPageGUI extends JFrame{
         BannerPanel.setBounds(0,135,1300,300);
         BannerPanel.setBackground(Color.LIGHT_GRAY);
 
-        mainPage_itemPanel = new MainPage_ItemPanel(item);
+        mainPage_itemPanel = new MainPage_ItemPanel(list2);
         ItemPanel = mainPage_itemPanel.ItemPanel;
         ItemPanel.setLayout(null);
         ItemPanel.setBounds(0,435,1300,245);

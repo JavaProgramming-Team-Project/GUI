@@ -1,14 +1,17 @@
 package ui;
 
+import api.ItemApi;
+import entity.Item;
 import event.CategoryPageEvent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class CategoryPanelGUI {
+    public List<Item> item;
     // 컬러 세팅
     Color SoftBlue;
-    public CategoryPanelGUI categoryPanelGUI;
     public CategoryPageEvent categoryPageEvent;
     // 패널 세팅
     public JPanel CategoryPanel;
@@ -119,7 +122,6 @@ public class CategoryPanelGUI {
         BeautyLabel.setHorizontalAlignment(JLabel.CENTER);
         BeautyLabel.setBackground(SoftBlue);
 
-
         // 패널 연동
         ButtonPanel.add(StayLabel);
         ButtonPanel.add(LeisureLabel);
@@ -129,7 +131,6 @@ public class CategoryPanelGUI {
         ButtonPanel.add(TicketLabel);
         ButtonPanel.add(RestaurantLabel);
         ButtonPanel.add(BeautyLabel);
-
 
         // 패널 추가
         CategoryPanel.add(ButtonPanel);

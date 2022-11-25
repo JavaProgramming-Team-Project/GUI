@@ -1,5 +1,6 @@
 package event;
 
+import api.ItemApi;
 import entity.Item;
 import ui.CategoryPanelGUI;
 
@@ -7,9 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 public class CategoryPageEvent extends JPanel implements MouseListener {
-    Item item;
+    public List<Item> item;
     public CategoryPanelGUI cgp;
     public CategoryPageEvent(CategoryPanelGUI c){
         cgp = c;
@@ -92,7 +94,8 @@ public class CategoryPageEvent extends JPanel implements MouseListener {
 
     }
 
-    public void setItem(){
+    public void getCategoryItem(String Category){
+        item = ItemApi.itemListByCategory(Category);
 
     }
 
