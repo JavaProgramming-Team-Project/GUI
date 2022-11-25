@@ -10,7 +10,6 @@ import java.awt.event.MouseListener;
 import static ui.Function.imageSetSize;
 
 public class MainPageGUI extends JFrame{
-    public int number = 0;
     public MainPageEvent mainPageEvent;
     public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
     public CategoryPanelGUI categoryPanelGUI = new CategoryPanelGUI();
