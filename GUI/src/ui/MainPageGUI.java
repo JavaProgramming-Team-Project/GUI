@@ -29,6 +29,7 @@ public class MainPageGUI extends JPanel{
     public JPanel CategoryIconPanel; // 메인화면 카테고리 패널
     public JPanel BannerPanel; // 가운데 이벤트 패널..?
     public JPanel ItemPanel; // 상품추천 패널
+    public JPanel ProductPanel = new JPanel();
 
     // 카테고리 관련 패널
     public JPanel StayPanel;
@@ -151,11 +152,16 @@ public class MainPageGUI extends JPanel{
         BeautyPanel.setBackground(Color.white);
 
         categoryPanelGUI = new CategoryPanelGUI("숙박");
-        CategoryPanel = categoryPanelGUI.CategoryPanel;
+        CategoryPanel = new JPanel();
         CategoryPanel.setLayout(null);
         CategoryPanel.setBounds(0,0,1300,680);
         CategoryPanel.setBackground(Color.gray);
         CategoryPanel.setVisible(false);
+
+        ProductPanel.setLayout(null);
+        ProductPanel.setBounds(0,0,1300,680);
+        ProductPanel.setBackground(Color.GRAY);
+        ProductPanel.setVisible(false);
 
         // 라벨
         JLabel TitleNameLabel = new JLabel("EveryBook");
@@ -306,6 +312,7 @@ public class MainPageGUI extends JPanel{
         MainPanel.add(MainPagePanel);
         MainPanel.add(MyPagePanel);
         MainPanel.add(CategoryPanel);
+        MainPanel.add(ProductPanel);
 
         // 이벤트 연동 -------------------------------------------------------
         StayPanel.addMouseListener(new MyMouseListener());
