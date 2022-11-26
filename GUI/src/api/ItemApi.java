@@ -15,6 +15,13 @@ import java.util.List;
 
 public class ItemApi {
 
+    public static void main(String[] args) {
+        List<Item> itemList = findItemByName("신라");
+        for (int i = 0; i < itemList.size(); i++) {
+            System.out.println(itemList.get(i).getItemName());
+        }
+    }
+
     private final static String HOST = Host.getHost();
     private static ObjectMapper mapper = new ObjectMapper();
 

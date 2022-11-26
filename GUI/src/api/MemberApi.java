@@ -18,6 +18,10 @@ import java.nio.charset.StandardCharsets;
 
 public class MemberApi {
 
+    public static void main(String[] args) {
+
+    }
+
     private static ObjectMapper mapper = new ObjectMapper();
     private final static String HOST = Host.getHost();
 
