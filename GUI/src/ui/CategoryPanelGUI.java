@@ -19,11 +19,14 @@ public class CategoryPanelGUI{
     // 컬러 세팅
     Color SoftBlue;
     public CategoryPageEvent categoryPageEvent;
+    public ProductPanelGUI productPanelGUI;
     // 패널 세팅
     public JPanel CategoryPanel;
     public JPanel ButtonPanel;
     public JPanel ProductPanel;
     public JPanel PagePanel;
+    public JPanel MainPanel;
+    public JPanel ProductPanel2;
 
     // 라벨
     public JLabel StayLabel;
@@ -38,6 +41,11 @@ public class CategoryPanelGUI{
     public CategoryPanelGUI(String Category){
         PriceColor = new Color(0xFC512C);
         categoryPageEvent = new CategoryPageEvent(this);
+        ProductPanel = new JPanel();
+
+        // 상품 가져오기
+        ItemDisplay(Category,0);
+
         // 색 코드
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
@@ -45,19 +53,33 @@ public class CategoryPanelGUI{
         SoftBlue = new Color(0xEEF9FF);
 
         // 패널 구문
+        ProductPanel = new JPanel();
+        ProductPanel.setLayout(null);
+        ProductPanel.setBackground(Color.WHITE);
+        ProductPanel.setBounds(100,70,1100,500);
+
+        //productPanelGUI = new ProductPanelGUI(itemList,0);
+        ProductPanel2 = new JPanel();
+        ProductPanel2.setLayout(null);
+        ProductPanel2.setBounds(0,0,1300,680);
+        ProductPanel2.setVisible(false);
+
+        MainPanel = new JPanel();
+        MainPanel.setLayout(null);
+        MainPanel.setBackground(Color.gray);
+        MainPanel.setVisible(true);
+
         CategoryPanel = new JPanel();
         CategoryPanel.setLayout(null);
         CategoryPanel.setBackground(Color.gray);
+        CategoryPanel.setVisible(true);
 
         ButtonPanel = new JPanel();
         ButtonPanel.setLayout(null);
         ButtonPanel.setBackground(Color.WHITE);
         ButtonPanel.setBounds(0,0,1300,70);
 
-        ProductPanel = new JPanel();
-        ProductPanel.setLayout(null);
-        ProductPanel.setBackground(Color.WHITE);
-        ProductPanel.setBounds(100,70,1100,500);
+
 
         PagePanel = new JPanel();
         PagePanel.setLayout(null);
@@ -129,9 +151,6 @@ public class CategoryPanelGUI{
         BeautyLabel.setHorizontalAlignment(JLabel.CENTER);
         BeautyLabel.setBackground(SoftBlue);
 
-        // 상품 가져오기
-        ItemDisplay(Category,0);
-
         // 패널 연동
         ButtonPanel.add(StayLabel);
         ButtonPanel.add(LeisureLabel);
@@ -146,6 +165,9 @@ public class CategoryPanelGUI{
         CategoryPanel.add(ButtonPanel);
         CategoryPanel.add(ProductPanel);
         CategoryPanel.add(PagePanel);
+
+        MainPanel.add(CategoryPanel);
+        MainPanel.add(ProductPanel2);
 
         // 이벤트 추가 및 연동
 
@@ -207,6 +229,8 @@ public class CategoryPanelGUI{
         int[] xLocation = new int[]{0,560,0,560,0,560,0,560};
         int[] yLocation = new int[]{0,0,130,130,260,260,390,390};
         itemList = new ArrayList<>();
+
+
         try{
             ProductPanel.removeAll();
 
@@ -222,6 +246,9 @@ public class CategoryPanelGUI{
                 Line1.setText("[" + itemList.get(i).getItemCategory() + "] " + itemList.get(i).getItemName());
                 Line2.setText(itemList.get(i).getItemBody());
                 PriceLabel.setText(itemList.get(i).getItemPrice() + "원");
+
+                categoryPageEvent.setCategory(Category);
+                ItemPanel.addMouseListener(categoryPageEvent);
 
                 ItemPanel.add(Line1);
                 ItemPanel.add(Line2);
