@@ -6,10 +6,14 @@ import event.CategoryPageEvent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryPanelGUI {
-    public List<Item> item;
+public class CategoryPanelGUI{
+    // 상품 관련 패널
+    public List<Item> itemList;
+    public JPanel ItemPanel;
     // 컬러 세팅
     Color SoftBlue;
     public CategoryPageEvent categoryPageEvent;
@@ -29,7 +33,7 @@ public class CategoryPanelGUI {
     public JLabel RestaurantLabel;
     public JLabel BeautyLabel;
 
-    public CategoryPanelGUI(){
+    public CategoryPanelGUI(String Category){
         categoryPageEvent = new CategoryPageEvent(this);
         // 색 코드
         Color HeaderColor = new Color(0x58CCFF);
@@ -49,7 +53,7 @@ public class CategoryPanelGUI {
 
         ProductPanel = new JPanel();
         ProductPanel.setLayout(null);
-        ProductPanel.setBackground(Color.WHITE);
+        ProductPanel.setBackground(Color.ORANGE);
         ProductPanel.setBounds(100,70,1100,500);
 
         PagePanel = new JPanel();
@@ -122,6 +126,9 @@ public class CategoryPanelGUI {
         BeautyLabel.setHorizontalAlignment(JLabel.CENTER);
         BeautyLabel.setBackground(SoftBlue);
 
+        // 상품 가져오기
+        ItemDisplay(Category);
+
         // 패널 연동
         ButtonPanel.add(StayLabel);
         ButtonPanel.add(LeisureLabel);
@@ -171,6 +178,34 @@ public class CategoryPanelGUI {
         LeisureLabel.setBackground(SoftBlue);
     }
 
+    public void ItemDisplay(String Category){
+
+        int[] xLocation = new int[]{0,540,0,540,0,540,0,540};
+        int[] yLocation = new int[]{0,0,130,130,260,260,390,390};
+        itemList = new ArrayList<>();
+        try{
+            ProductPanel.removeAll();
+
+            //itemList = ItemApi.itemListByCategory(Category);
+            System.out.println(itemList);
+            for(int i=0; i<itemList.size(); i++){
+                ItemPanel = new JPanel();
+                ItemPanel.setName(String.valueOf(i));
+                ItemPanel.setLayout(null);
+                ItemPanel.setBounds(xLocation[i],yLocation[i],530,120);
+                ItemPanel.setBackground(SoftBlue);
+
+
+
+                ProductPanel.add(ItemPanel);
+            }
+            ProductPanel.repaint();
+        }catch (Exception e){
+            System.out.println("오류 발생 : " + e.getMessage());
+        }
+
+
+    }
 
     public void Convenience(){
         Remove_highlights();

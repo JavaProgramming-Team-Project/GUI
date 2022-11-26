@@ -25,36 +25,42 @@ public class CategoryPageEvent extends JPanel implements MouseListener {
         switch (name){
             case "숙소": {
                 Remove_highlights();
+                cgp.ItemDisplay("숙박");
                 cgp.StayLabel.setOpaque(true);
                 cgp.StayLabel.setBackground(SoftBlue);
                 break;
             }
             case "레저": {
                 Remove_highlights();
+                cgp.ItemDisplay("레저");
                 cgp.LeisureLabel.setOpaque(true);
                 cgp.LeisureLabel.setBackground(SoftBlue);
                 break;
             }
             case "축제": {
                 Remove_highlights();
+                cgp.ItemDisplay("축제");
                 cgp.FestivalLabel.setOpaque(true);
                 cgp.FestivalLabel.setBackground(SoftBlue);
                 break;
             }
             case "공연":{
                 Remove_highlights();
+                cgp.ItemDisplay("공연");
                 cgp.ShowLabel.setOpaque(true);
                 cgp.ShowLabel.setBackground(SoftBlue);
                 break;
             }
             case "전시":{
                 Remove_highlights();
+                cgp.ItemDisplay("전시");
                 cgp.DisplayLabel.setOpaque(true);
                 cgp.DisplayLabel.setBackground(SoftBlue);
                 break;
             }
             case "티켓" : {
                 Remove_highlights();
+                cgp.ItemDisplay("티켓");
                 cgp.TicketLabel.setOpaque(true);
                 cgp.TicketLabel.setBackground(SoftBlue);
                 break;
@@ -67,6 +73,7 @@ public class CategoryPageEvent extends JPanel implements MouseListener {
             }
             case "뷰티" : {
                 Remove_highlights();
+                cgp.ItemDisplay("뷰티");
                 cgp.BeautyLabel.setOpaque(true);
                 cgp.BeautyLabel.setBackground(SoftBlue);
                 break;

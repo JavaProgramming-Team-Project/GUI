@@ -38,7 +38,7 @@ public class LoginEvent extends JFrame implements ActionListener {
             }
             else {
                 LoginDto loginDto = new LoginDto(idField.getText(),passwordField.getText());
-                //MemberApi.login(loginDto);
+                MemberApi.login(loginDto);
                 jframe.dispose();
                 new MainPageGUI();
             }
