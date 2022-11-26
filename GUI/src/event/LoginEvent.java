@@ -4,6 +4,7 @@ import api.MemberApi;
 import dto.LoginDto;
 import entity.Member;
 import ui.LoginGUI;
+import ui.MainContainer;
 import ui.MainPageGUI;
 
 import javax.swing.*;
@@ -40,7 +41,7 @@ public class LoginEvent extends JFrame implements ActionListener {
                 LoginDto loginDto = new LoginDto(idField.getText(),passwordField.getText());
                 MemberApi.login(loginDto);
                 jframe.dispose();
-                new MainPageGUI();
+                new MainContainer();
             }
         }
     }
