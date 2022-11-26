@@ -15,6 +15,13 @@ import java.util.List;
 
 public class ItemApi {
 
+    public static void main(String[] args) {
+        List<Item> itemList = itemListByCategory("숙박");
+        for (int i = 0; i < itemList.size(); i++) {
+            System.out.println(itemList.get(i).getItemName());
+        }
+    }
+
     private final static String HOST = Host.getHost();
     private static ObjectMapper mapper = new ObjectMapper();
 
@@ -24,7 +31,6 @@ public class ItemApi {
      * @return 해당 카테고리의 상품 리스트
      */
     public static List<Item> itemListByCategory(String itemCategory) {
-
         List<Item> list;
         try {
             String hostUrl = HOST + "/item/category/"+ URLEncoder.encode(itemCategory, StandardCharsets.UTF_8);
@@ -47,15 +53,14 @@ public class ItemApi {
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuffer response = new StringBuffer();
-            String inputLine;
+            /*String inputLine;
 
             while ((inputLine = br.readLine()) != null) {
                 response.append(inputLine);
-            }
-            br.close();
+            }*/
 
-            list = mapper.readValue(response.toString(), new TypeReference<List<Item>>() {});
+            list = mapper.readValue(br.readLine(), new TypeReference<List<Item>>() {});
+            br.close();
 
         } catch (ProtocolException e) {
             throw new RuntimeException(e);
@@ -96,16 +101,14 @@ public class ItemApi {
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuffer response = new StringBuffer();
-            String inputLine;
+            /*String inputLine;
 
             while ((inputLine = br.readLine()) != null) {
                 response.append(inputLine);
-            }
-            br.close();
+            }*/
 
-            list = mapper.readValue(response.toString(), new TypeReference<>() {
-            });
+            list = mapper.readValue(br.readLine(), new TypeReference<>() {});
+            br.close();
 
         } catch (ProtocolException e) {
             throw new RuntimeException(e);
@@ -146,16 +149,14 @@ public class ItemApi {
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuffer response = new StringBuffer();
-            String inputLine;
+            /*String inputLine;
 
             while ((inputLine = br.readLine()) != null) {
                 response.append(inputLine);
-            }
+            }*/
+
+            item = mapper.readValue(br.readLine(), new TypeReference<>() {});
             br.close();
-
-            item = mapper.readValue(response.toString(), new TypeReference<>() {});
-
 
         } catch (ProtocolException e) {
             throw new RuntimeException(e);

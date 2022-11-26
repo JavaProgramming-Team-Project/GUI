@@ -46,8 +46,10 @@ public class MemberApi {
             os.flush();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String returnMsg = br.readLine();
-            System.out.println("응답 메시지 : " + returnMsg);
+            String response = br.readLine();
+            System.out.println("응답 메시지 : " + response);
+
+            br.close();
 
             int responseCode = conn.getResponseCode();
             if (responseCode == 400) {
@@ -95,16 +97,16 @@ public class MemberApi {
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuffer response = new StringBuffer();
-            String inputLine;
+            /*String inputLine;
 
             while ((inputLine = br.readLine()) != null) {
                 response.append(inputLine);
-            }
-            br.close();
+            }*/
 
-            Member member = mapper.readValue(response.toString(), Member.class);
+            Member member = mapper.readValue(br.readLine(), Member.class);
             LoginMember.setLoginMember(member);
+
+            br.close();
 
         } catch (ProtocolException e) {
             System.out.println("ProtocolException");
