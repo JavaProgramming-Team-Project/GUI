@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryPanelGUI{
+    // 색상 지정
+    Color PriceColor;
     // 상품 관련 패널
     public List<Item> itemList;
     public JPanel ItemPanel;
@@ -34,12 +36,13 @@ public class CategoryPanelGUI{
     public JLabel BeautyLabel;
 
     public CategoryPanelGUI(String Category){
+        PriceColor = new Color(0xFC512C);
         categoryPageEvent = new CategoryPageEvent(this);
         // 색 코드
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
         Color LightGray = new Color(0xF6F6F6);
-        SoftBlue = new Color(0xB8E9FF);
+        SoftBlue = new Color(0xEEF9FF);
 
         // 패널 구문
         CategoryPanel = new JPanel();
@@ -53,7 +56,7 @@ public class CategoryPanelGUI{
 
         ProductPanel = new JPanel();
         ProductPanel.setLayout(null);
-        ProductPanel.setBackground(Color.ORANGE);
+        ProductPanel.setBackground(Color.WHITE);
         ProductPanel.setBounds(100,70,1100,500);
 
         PagePanel = new JPanel();
@@ -127,7 +130,7 @@ public class CategoryPanelGUI{
         BeautyLabel.setBackground(SoftBlue);
 
         // 상품 가져오기
-        ItemDisplay(Category);
+        ItemDisplay(Category,0);
 
         // 패널 연동
         ButtonPanel.add(StayLabel);
@@ -178,25 +181,51 @@ public class CategoryPanelGUI{
         LeisureLabel.setBackground(SoftBlue);
     }
 
-    public void ItemDisplay(String Category){
+    public void ItemDisplay(String Category,int page){
+        JLabel Line1 = new JLabel(); // [카테고리] + 이름
+        Line1.setFont(new Font("나눔스퀘어_ac ExtraBold",Font.PLAIN,20));
+        Line1.setFont(Line1.getFont().deriveFont(21.0f));
+        Line1.setBounds(150,0,400,26);
+        //Line1.setOpaque();
+        Line1.setForeground(Color.GRAY);
 
-        int[] xLocation = new int[]{0,540,0,540,0,540,0,540};
+        JLabel Line2 = new JLabel(); // 상품 설명
+        Line2.setFont(new Font("나눔스퀘어",Font.PLAIN,20));
+        Line2.setFont(Line2.getFont().deriveFont(18.0f));
+        Line2.setBounds(150,26,400,26);
+        //Line2.setOpaque(false);
+        Line2.setForeground(Color.GRAY);
+
+        JLabel PriceLabel = new JLabel(); // 상품 가격
+        PriceLabel.setFont(new Font("여기어때 잘난체",Font.BOLD,25));
+        PriceLabel.setFont(PriceLabel.getFont().deriveFont(21.0f));
+        PriceLabel.setBounds(150,92,385,30);
+        //PriceLabel.setOpaque(true);
+        PriceLabel.setForeground(PriceColor);
+        PriceLabel.setHorizontalAlignment(JLabel.RIGHT);
+
+        int[] xLocation = new int[]{0,560,0,560,0,560,0,560};
         int[] yLocation = new int[]{0,0,130,130,260,260,390,390};
         itemList = new ArrayList<>();
         try{
             ProductPanel.removeAll();
 
-            //itemList = ItemApi.itemListByCategory(Category);
-            System.out.println(itemList);
-            for(int i=0; i<itemList.size(); i++){
+            itemList = ItemApi.itemListByCategory(Category);
+            System.out.println(itemList.size());
+            for(int i=page; i<itemList.size(); i++) {
                 ItemPanel = new JPanel();
                 ItemPanel.setName(String.valueOf(i));
                 ItemPanel.setLayout(null);
-                ItemPanel.setBounds(xLocation[i],yLocation[i],530,120);
+                ItemPanel.setBounds(xLocation[i], yLocation[i], 540, 120);
                 ItemPanel.setBackground(SoftBlue);
 
+                Line1.setText("[" + itemList.get(i).getItemCategory() + "] " + itemList.get(i).getItemName());
+                Line2.setText(itemList.get(i).getItemBody());
+                PriceLabel.setText(itemList.get(i).getItemPrice() + "원");
 
-
+                ItemPanel.add(Line1);
+                ItemPanel.add(Line2);
+                ItemPanel.add(PriceLabel);
                 ProductPanel.add(ItemPanel);
             }
             ProductPanel.repaint();
