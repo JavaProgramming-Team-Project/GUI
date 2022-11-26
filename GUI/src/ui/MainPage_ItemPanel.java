@@ -1,8 +1,6 @@
 package ui;
 
-import api.ItemApi;
 import entity.Item;
-import org.json.simple.ItemList;
 
 import javax.swing.*;
 import java.awt.*;
