@@ -97,11 +97,6 @@ public class MemberApi {
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            /*String inputLine;
-
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }*/
 
             Member member = mapper.readValue(br.readLine(), Member.class);
             LoginMember.setLoginMember(member);

@@ -15,13 +15,6 @@ import java.util.List;
 
 public class ItemApi {
 
-    public static void main(String[] args) {
-        List<Item> itemList = itemListByCategory("숙박");
-        for (int i = 0; i < itemList.size(); i++) {
-            System.out.println(itemList.get(i).getItemName());
-        }
-    }
-
     private final static String HOST = Host.getHost();
     private static ObjectMapper mapper = new ObjectMapper();
 
@@ -53,11 +46,6 @@ public class ItemApi {
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            /*String inputLine;
-
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }*/
 
             list = mapper.readValue(br.readLine(), new TypeReference<List<Item>>() {});
             br.close();
@@ -101,11 +89,6 @@ public class ItemApi {
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            /*String inputLine;
-
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }*/
 
             list = mapper.readValue(br.readLine(), new TypeReference<>() {});
             br.close();
@@ -149,11 +132,6 @@ public class ItemApi {
             }
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            /*String inputLine;
-
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }*/
 
             item = mapper.readValue(br.readLine(), new TypeReference<>() {});
             br.close();
