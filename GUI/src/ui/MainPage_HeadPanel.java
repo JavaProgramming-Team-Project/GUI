@@ -13,7 +13,6 @@ public class MainPage_HeadPanel extends JPanel {
     public MainPage_HeadPanel(){
         HeadPanel = new JPanel();
         HeadPanel.setLayout(null);
-        HeadPanel.setBounds(0,0,1300,70);
         // 아이콘
         ImageIcon MagnifierIcon = new ImageIcon("src/Icon//돋보기.png");
         MagnifierIcon = imageSetSize(MagnifierIcon,40,40);

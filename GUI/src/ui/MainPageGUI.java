@@ -1,7 +1,5 @@
 package ui;
 
-import api.ItemApi;
-import entity.Item;
 import event.MainPageEvent;
 
 import javax.swing.*;
@@ -11,15 +9,12 @@ import java.awt.event.MouseListener;
 
 import static ui.Function.imageSetSize;
 
-public class MainPageGUI extends JFrame{
-    // 상품 관련
-    public Item item;
-
+public class MainPageGUI extends JPanel{
     // 패널 및 이벤트 관련
     public MainPageEvent mainPageEvent;
-    public MyPagePanelGUI myPagePanelGUI = new MyPagePanelGUI();
-    public CategoryPanelGUI categoryPanelGUI = new CategoryPanelGUI();
-    public MainPage_HeadPanel mainPageHeadPanel;
+    public MyPagePanelGUI myPagePanelGUI
+            = new MyPagePanelGUI();
+    public CategoryPanelGUI categoryPanelGUI;
     public MainPage_ItemPanel mainPage_itemPanel;
     // 이벤트 관련 패널
     private JLabel MyPageLabel;
@@ -27,17 +22,16 @@ public class MainPageGUI extends JFrame{
     private JLabel LogoutButton;
 
     // 메인 페이지 패널
-
-    private JPanel MyPagePanel;
-    private JPanel MainPagePanel;
-    private JPanel CategoryPanel;
-    private JPanel HeadPanel; // 헤드패널은 계속 고정됨,
-    private JPanel CategoryIconPanel; // 메인화면 카테고리 패널
-    private JPanel BannerPanel; // 가운데 이벤트 패널..?
-    private JPanel ItemPanel; // 상품추천 패널
+    public JPanel MainPanel;
+    public JPanel MyPagePanel;
+    public JPanel MainPagePanel;
+    public JPanel CategoryPanel;
+    public JPanel CategoryIconPanel; // 메인화면 카테고리 패널
+    public JPanel BannerPanel; // 가운데 이벤트 패널..?
+    public JPanel ItemPanel; // 상품추천 패널
+    public JPanel ProductPanel = new JPanel();
 
     // 카테고리 관련 패널
-
     public JPanel StayPanel;
     public JPanel leisurePanel;
     public JPanel FestivalPanel;
@@ -47,12 +41,7 @@ public class MainPageGUI extends JFrame{
     public JPanel RestaurantPanel;
     public JPanel BeautyPanel;
 
-    // 컨테이너~
-    public Container ct;
-
     public MainPageGUI(){
-        Item item = new Item(216L,"name","Body",
-                1000,"충청남도","식당","01034295935","이미지 주소");
         mainPageEvent = new MainPageEvent();
         // 색상
         Color HeaderColor = new Color(0x58CCFF);
@@ -61,7 +50,6 @@ public class MainPageGUI extends JFrame{
         Color SoftBlue = new Color(0xB8E9FF);
 
         // 아이콘
-
         ImageIcon BannerIcon = new ImageIcon("src/Icon//배너.png");
         BannerIcon = imageSetSize(BannerIcon,1300,310);
 
@@ -90,15 +78,10 @@ public class MainPageGUI extends JFrame{
         BeautyIcon = imageSetSize(BeautyIcon,100,100);
 
         // 패널
-        ct = getContentPane();
-        ct.setLayout(null);
-        ct.setBackground(LightGray);
-
-        mainPageHeadPanel = new MainPage_HeadPanel();
-        HeadPanel = mainPageHeadPanel.HeadPanel;
-        HeadPanel.setLayout(null);
-        HeadPanel.setBounds(0,0,1300,70);
-        HeadPanel.setBackground(HeaderColor);
+        MainPanel = new JPanel();
+        MainPanel.setLayout(null);
+        MainPanel.setBackground(Color.gray);
+        MainPanel.setVisible(true);
 
         CategoryIconPanel = new JPanel();
         CategoryIconPanel.setLayout(null);
@@ -110,7 +93,7 @@ public class MainPageGUI extends JFrame{
         BannerPanel.setBounds(0,135,1300,300);
         BannerPanel.setBackground(Color.LIGHT_GRAY);
 
-        mainPage_itemPanel = new MainPage_ItemPanel(item);
+        mainPage_itemPanel = new MainPage_ItemPanel();
         ItemPanel = mainPage_itemPanel.ItemPanel;
         ItemPanel.setLayout(null);
         ItemPanel.setBounds(0,435,1300,245);
@@ -118,12 +101,13 @@ public class MainPageGUI extends JFrame{
 
         MainPagePanel = new JPanel();
         MainPagePanel.setLayout(null);
-        MainPagePanel.setBounds(0,70,1300,680);
+        MainPagePanel.setBounds(0,0,1300,680);
         MainPagePanel.setBackground(Color.white);
+        MainPagePanel.setVisible(true);
 
         MyPagePanel = myPagePanelGUI.MyPagePanel;
         MyPagePanel.setLayout(null);
-        MyPagePanel.setBounds(0,70,1300,680);
+        MyPagePanel.setBounds(0,0,1300,680);
         MyPagePanel.setBackground(Color.white);
         MyPagePanel.setVisible(false);
 
@@ -167,11 +151,17 @@ public class MainPageGUI extends JFrame{
         BeautyPanel.setBounds(970,10,100,120);
         BeautyPanel.setBackground(Color.white);
 
-        CategoryPanel = categoryPanelGUI.CategoryPanel;
+        categoryPanelGUI = new CategoryPanelGUI("숙박");
+        CategoryPanel = new JPanel();
         CategoryPanel.setLayout(null);
-        CategoryPanel.setBounds(0,70,1300,680);
+        CategoryPanel.setBounds(0,0,1300,680);
         CategoryPanel.setBackground(Color.gray);
         CategoryPanel.setVisible(false);
+
+        ProductPanel.setLayout(null);
+        ProductPanel.setBounds(0,0,1300,680);
+        ProductPanel.setBackground(Color.GRAY);
+        ProductPanel.setVisible(false);
 
         // 라벨
         JLabel TitleNameLabel = new JLabel("EveryBook");
@@ -319,10 +309,10 @@ public class MainPageGUI extends JFrame{
         MainPagePanel.add(BannerPanel);
         MainPagePanel.add(ItemPanel);
 
-        ct.add(HeadPanel);
-        ct.add(MainPagePanel);
-        ct.add(MyPagePanel);
-        ct.add(CategoryPanel);
+        MainPanel.add(MainPagePanel);
+        MainPanel.add(MyPagePanel);
+        MainPanel.add(CategoryPanel);
+        MainPanel.add(ProductPanel);
 
         // 이벤트 연동 -------------------------------------------------------
         StayPanel.addMouseListener(new MyMouseListener());
@@ -333,65 +323,42 @@ public class MainPageGUI extends JFrame{
         TicketPanel.addMouseListener(new MyMouseListener());
         RestaurantPanel.addMouseListener(new MyMouseListener());
         BeautyPanel.addMouseListener(new MyMouseListener());
-        mainPageHeadPanel.LogoutButton.addMouseListener(new MyMouseListener());
-        mainPageHeadPanel.MainLabel.addMouseListener(new MyMouseListener());
-        mainPageHeadPanel.MyPageLabel.addMouseListener(new MyMouseListener());
-
-        setVisible(true);
-        setSize(1300,750);
-        setTitle("EVERY BOOK");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
     }
 
     class MyMouseListener implements MouseListener{
         @Override
         public void mouseClicked(MouseEvent e) {
             if(e.getSource() == StayPanel){
-                Category_Conv();
-                //ItemApi.itemListByCategory("숙소");
+                Category_Conv("숙박");
                 categoryPanelGUI.StayLabel.setOpaque(true);
             }
-
             else if (e.getSource() == leisurePanel) {
-                Category_Conv();
+                Category_Conv("레저");
                 categoryPanelGUI.LeisureLabel.setOpaque(true);
             }
             else if (e.getSource() == FestivalPanel) {
-                Category_Conv();
+                Category_Conv("축제");
                 categoryPanelGUI.FestivalLabel.setOpaque(true);
             }
             else if (e.getSource() == ShowPanel) {
-                Category_Conv();
+                Category_Conv("공연");
                 categoryPanelGUI.ShowLabel.setOpaque(true);
             }
             else if (e.getSource() == DisplayPanel) {
-                Category_Conv();
+                Category_Conv("전시");
                 categoryPanelGUI.DisplayLabel.setOpaque(true);
             }
             else if (e.getSource() == TicketPanel) {
-                Category_Conv();
+                Category_Conv("티켓");
                 categoryPanelGUI.TicketLabel.setOpaque(true);
             }
             else if (e.getSource() == RestaurantPanel) {
-                Category_Conv();
+                Category_Conv("식당");
                 categoryPanelGUI.RestaurantLabel.setOpaque(true);
             }
             else if (e.getSource() == BeautyPanel) {
-                Category_Conv();
+                Category_Conv("뷰티");
                 categoryPanelGUI.BeautyLabel.setOpaque(true);
-            }
-            else if(e.getSource() == mainPageHeadPanel.MyPageLabel){
-                MainPagePanel.setVisible(false);
-                MyPagePanel.setVisible(true);
-            }
-            else if(e.getSource() == mainPageHeadPanel.MainLabel){
-                MyPagePanel.setVisible(false);
-                MainPagePanel.setVisible(true);
-            }
-            else if(e.getSource() == mainPageHeadPanel.LogoutButton){
-                dispose();
-                new LoginGUI();
             }
         }
 
@@ -422,22 +389,19 @@ public class MainPageGUI extends JFrame{
         CategoryPanel.setVisible(false);
     }
 
-    public void Category_Conv(){
-        ct.remove(CategoryPanel);
-        categoryPanelGUI = new CategoryPanelGUI();
+    public void Category_Conv(String Category){
+        CategoryPanel.removeAll();
+        MainPanel.remove(CategoryPanel);
+        categoryPanelGUI = new CategoryPanelGUI(Category);
         CategoryPanel = categoryPanelGUI.CategoryPanel;
         CategoryPanel.setLayout(null);
-        CategoryPanel.setBounds(0,70,1300,680);
+        CategoryPanel.setBounds(0,0,1300,680);
         CategoryPanel.setBackground(Color.white);
-        ct.add(CategoryPanel);
+        MainPanel.add(CategoryPanel);
 
         CancelVisit();
         categoryPanelGUI.Convenience(); // CategoryPanelGUI에 있는 메소드들을 한번에 묶어놓은 것
         categoryPanelGUI.setColor(); //
         CategoryPanel.setVisible(true);
-    }
-
-    public static void main(String[] args){
-        new MainPageGUI();
     }
 }
