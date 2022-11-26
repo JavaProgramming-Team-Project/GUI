@@ -7,6 +7,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Function extends JFrame{
+    static Color HeaderColor = new Color(0x58CCFF);
+    static Color DeepBlue = new Color(0x18A8F1);
+    static Color LightGray = new Color(0xF6F6F6);
+    static Color SoftBlue = new Color(0xB8E9FF);
+    static Color SoftBlue2 = new Color(0xEEF9FF);
     // 이미지 아이콘 크기 변환 메소드
     static ImageIcon imageSetSize(ImageIcon icon, int i, int j) { // image Size Setting
         Image ximg = icon.getImage();  //ImageIcon을 Image로 변환.
