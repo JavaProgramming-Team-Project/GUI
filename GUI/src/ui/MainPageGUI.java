@@ -11,9 +11,9 @@ import static ui.Function.imageSetSize;
 
 public class MainPageGUI extends JPanel{
     // 패널 및 이벤트 관련
+    public ProductPanelGUI productPanelGUI;
     public MainPageEvent mainPageEvent;
-    public MyPagePanelGUI myPagePanelGUI
-            = new MyPagePanelGUI();
+    public MyPagePanelGUI myPagePanelGUI;
     public CategoryPanelGUI categoryPanelGUI;
     public MainPage_ItemPanel mainPage_itemPanel;
     // 이벤트 관련 패널
@@ -29,7 +29,7 @@ public class MainPageGUI extends JPanel{
     public JPanel CategoryIconPanel; // 메인화면 카테고리 패널
     public JPanel BannerPanel; // 가운데 이벤트 패널..?
     public JPanel ItemPanel; // 상품추천 패널
-    public JPanel ProductPanel = new JPanel();
+    public JPanel ProductPanel;
 
     // 카테고리 관련 패널
     public JPanel StayPanel;
@@ -42,7 +42,6 @@ public class MainPageGUI extends JPanel{
     public JPanel BeautyPanel;
 
     public MainPageGUI(){
-        mainPageEvent = new MainPageEvent();
         // 색상
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
@@ -105,11 +104,18 @@ public class MainPageGUI extends JPanel{
         MainPagePanel.setBackground(Color.white);
         MainPagePanel.setVisible(true);
 
+        myPagePanelGUI = new MyPagePanelGUI();
         MyPagePanel = myPagePanelGUI.MyPagePanel;
         MyPagePanel.setLayout(null);
         MyPagePanel.setBounds(0,0,1300,680);
         MyPagePanel.setBackground(Color.white);
         MyPagePanel.setVisible(false);
+
+        ProductPanel = new JPanel();
+        ProductPanel.setLayout(null);
+        ProductPanel.setBounds(0,0,1300,680);
+        ProductPanel.setBackground(Color.white);
+        ProductPanel.setVisible(false);
 
         StayPanel= new JPanel();
         StayPanel.setLayout(null);
@@ -151,7 +157,7 @@ public class MainPageGUI extends JPanel{
         BeautyPanel.setBounds(970,10,100,120);
         BeautyPanel.setBackground(Color.white);
 
-        categoryPanelGUI = new CategoryPanelGUI("숙박");
+        //categoryPanelGUI = new CategoryPanelGUI("숙박");
         CategoryPanel = new JPanel();
         CategoryPanel.setLayout(null);
         CategoryPanel.setBounds(0,0,1300,680);
@@ -312,7 +318,6 @@ public class MainPageGUI extends JPanel{
         MainPanel.add(MainPagePanel);
         MainPanel.add(MyPagePanel);
         MainPanel.add(CategoryPanel);
-        MainPanel.add(ProductPanel);
 
         // 이벤트 연동 -------------------------------------------------------
         StayPanel.addMouseListener(new MyMouseListener());
@@ -387,13 +392,14 @@ public class MainPageGUI extends JPanel{
         MainPagePanel.setVisible(false);
         MyPagePanel.setVisible(false);
         CategoryPanel.setVisible(false);
+        ProductPanel.setVisible(false);
     }
 
     public void Category_Conv(String Category){
         CategoryPanel.removeAll();
         MainPanel.remove(CategoryPanel);
         categoryPanelGUI = new CategoryPanelGUI(Category);
-        CategoryPanel = categoryPanelGUI.CategoryPanel;
+        CategoryPanel = categoryPanelGUI.MainPanel;
         CategoryPanel.setLayout(null);
         CategoryPanel.setBounds(0,0,1300,680);
         CategoryPanel.setBackground(Color.white);
