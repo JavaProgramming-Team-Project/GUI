@@ -41,8 +41,10 @@ public class BookApi {
             os.flush();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String returnMsg = br.readLine();
-            System.out.println("응답 메시지 : " + returnMsg);
+            String response = br.readLine();
+            System.out.println("응답 메시지 : " + response);
+
+            br.close();
 
             int responseCode = conn.getResponseCode();
             if (responseCode == 400) {
