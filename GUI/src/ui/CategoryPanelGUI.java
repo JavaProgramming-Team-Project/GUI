@@ -6,13 +6,13 @@ import event.CategoryPageEvent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryPanelGUI{
     // 색상 지정
     Color PriceColor;
+    Color SoftBlue2;
     // 상품 관련 패널
     public List<Item> itemList;
     public JPanel ItemPanel;
@@ -44,13 +44,14 @@ public class CategoryPanelGUI{
         ProductPanel = new JPanel();
 
         // 상품 가져오기
-        ItemDisplay(Category,0);
+        itemDisplay(Category,0);
 
         // 색 코드
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
         Color LightGray = new Color(0xF6F6F6);
         SoftBlue = new Color(0xEEF9FF);
+        SoftBlue2 = new Color(0xB8E9FF);
 
         // 패널 구문
         ProductPanel = new JPanel();
@@ -93,7 +94,7 @@ public class CategoryPanelGUI{
         StayLabel.setBounds(180,11,100,35);
         StayLabel.setForeground(Color.GRAY);
         StayLabel.setHorizontalAlignment(JLabel.CENTER);
-        StayLabel.setBackground(SoftBlue);
+        StayLabel.setBackground(SoftBlue2);
 
         LeisureLabel = new JLabel("레저");
         LeisureLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -101,7 +102,7 @@ public class CategoryPanelGUI{
         LeisureLabel.setBounds(300,11,100,35);
         LeisureLabel.setForeground(Color.GRAY);
         LeisureLabel.setHorizontalAlignment(JLabel.CENTER);
-        LeisureLabel.setBackground(SoftBlue);
+        LeisureLabel.setBackground(SoftBlue2);
 
         FestivalLabel = new JLabel("축제");
         FestivalLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -109,7 +110,7 @@ public class CategoryPanelGUI{
         FestivalLabel.setBounds(420,11,100,35);
         FestivalLabel.setForeground(Color.GRAY);
         FestivalLabel.setHorizontalAlignment(JLabel.CENTER);
-        FestivalLabel.setBackground(SoftBlue);
+        FestivalLabel.setBackground(SoftBlue2);
 
         ShowLabel = new JLabel("공연");
         ShowLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -117,7 +118,7 @@ public class CategoryPanelGUI{
         ShowLabel.setBounds(540,11,100,35);
         ShowLabel.setForeground(Color.GRAY);
         ShowLabel.setHorizontalAlignment(JLabel.CENTER);
-        ShowLabel.setBackground(SoftBlue);
+        ShowLabel.setBackground(SoftBlue2);
 
         DisplayLabel = new JLabel("전시");
         DisplayLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -125,7 +126,7 @@ public class CategoryPanelGUI{
         DisplayLabel.setBounds(660,11,100,35);
         DisplayLabel.setForeground(Color.GRAY);
         DisplayLabel.setHorizontalAlignment(JLabel.CENTER);
-        DisplayLabel.setBackground(SoftBlue);
+        DisplayLabel.setBackground(SoftBlue2);
 
         TicketLabel = new JLabel("티켓");
         TicketLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -133,7 +134,7 @@ public class CategoryPanelGUI{
         TicketLabel.setBounds(780,11,100,35);
         TicketLabel.setForeground(Color.GRAY);
         TicketLabel.setHorizontalAlignment(JLabel.CENTER);
-        TicketLabel.setBackground(SoftBlue);
+        TicketLabel.setBackground(SoftBlue2);
 
         RestaurantLabel = new JLabel("식당");
         RestaurantLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -141,7 +142,7 @@ public class CategoryPanelGUI{
         RestaurantLabel.setBounds(900,11,100,35);
         RestaurantLabel.setForeground(Color.GRAY);
         RestaurantLabel.setHorizontalAlignment(JLabel.CENTER);
-        RestaurantLabel.setBackground(SoftBlue);
+        RestaurantLabel.setBackground(SoftBlue2);
 
         BeautyLabel = new JLabel("뷰티");
         BeautyLabel.setFont(new Font("맑은 고딕",Font.BOLD, 11));
@@ -149,7 +150,7 @@ public class CategoryPanelGUI{
         BeautyLabel.setBounds(1020,11,100,35);
         BeautyLabel.setForeground(Color.GRAY);
         BeautyLabel.setHorizontalAlignment(JLabel.CENTER);
-        BeautyLabel.setBackground(SoftBlue);
+        BeautyLabel.setBackground(SoftBlue2);
 
         // 패널 연동
         ButtonPanel.add(StayLabel);
@@ -193,17 +194,17 @@ public class CategoryPanelGUI{
     }
 
     public void setColor(){
-        StayLabel.setBackground(SoftBlue);
-        ShowLabel.setBackground(SoftBlue);
-        BeautyLabel.setBackground(SoftBlue);
-        RestaurantLabel.setBackground(SoftBlue);
-        DisplayLabel.setBackground(SoftBlue);
-        FestivalLabel.setBackground(SoftBlue);
-        TicketLabel.setBackground(SoftBlue);
-        LeisureLabel.setBackground(SoftBlue);
+        StayLabel.setBackground(SoftBlue2);
+        ShowLabel.setBackground(SoftBlue2);
+        BeautyLabel.setBackground(SoftBlue2);
+        RestaurantLabel.setBackground(SoftBlue2);
+        DisplayLabel.setBackground(SoftBlue2);
+        FestivalLabel.setBackground(SoftBlue2);
+        TicketLabel.setBackground(SoftBlue2);
+        LeisureLabel.setBackground(SoftBlue2);
     }
 
-    public void ItemDisplay(String Category,int page){
+    public void itemDisplay(String Category,int page){
         JLabel Line1 = new JLabel(); // [카테고리] + 이름
         Line1.setFont(new Font("나눔스퀘어_ac ExtraBold",Font.PLAIN,20));
         Line1.setFont(Line1.getFont().deriveFont(21.0f));
@@ -257,15 +258,6 @@ public class CategoryPanelGUI{
         }catch (Exception e){
             System.out.println("오류 발생 : " + e.getMessage());
         }
-    }
-
-    public void visitProduct(JPanel jp){
-        System.out.println("잘 건너왔는지 테스트해봄"+jp.getName());
-        productPanelGUI = new ProductPanelGUI(itemList, Integer.parseInt(jp.getName()));
-        ProductPanel2 = productPanelGUI.MainPanel;
-        ProductPanel2.setBackground(Color.GRAY);
-        CategoryPanel.setVisible(false);
-        ProductPanel2.setVisible(true);
     }
 
     public void Convenience(){
