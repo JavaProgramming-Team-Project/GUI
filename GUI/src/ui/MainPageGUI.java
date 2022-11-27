@@ -111,12 +111,6 @@ public class MainPageGUI extends JPanel{
         MyPagePanel.setBackground(Color.white);
         MyPagePanel.setVisible(false);
 
-        ProductPanel = new JPanel();
-        ProductPanel.setLayout(null);
-        ProductPanel.setBounds(0,0,1300,680);
-        ProductPanel.setBackground(Color.white);
-        ProductPanel.setVisible(false);
-
         StayPanel= new JPanel();
         StayPanel.setLayout(null);
         StayPanel.setBounds(200,10,100,120);
@@ -163,11 +157,6 @@ public class MainPageGUI extends JPanel{
         CategoryPanel.setBounds(0,0,1300,680);
         CategoryPanel.setBackground(Color.gray);
         CategoryPanel.setVisible(false);
-
-        ProductPanel.setLayout(null);
-        ProductPanel.setBounds(0,0,1300,680);
-        ProductPanel.setBackground(Color.GRAY);
-        ProductPanel.setVisible(false);
 
         // 라벨
         JLabel TitleNameLabel = new JLabel("EveryBook");
@@ -392,11 +381,9 @@ public class MainPageGUI extends JPanel{
         MainPagePanel.setVisible(false);
         MyPagePanel.setVisible(false);
         CategoryPanel.setVisible(false);
-        ProductPanel.setVisible(false);
     }
 
     public void Category_Conv(String Category){
-        CategoryPanel.removeAll();
         MainPanel.remove(CategoryPanel);
         categoryPanelGUI = new CategoryPanelGUI(Category);
         CategoryPanel = categoryPanelGUI.MainPanel;

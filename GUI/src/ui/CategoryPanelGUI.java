@@ -62,24 +62,24 @@ public class CategoryPanelGUI{
         ProductPanel2 = new JPanel();
         ProductPanel2.setLayout(null);
         ProductPanel2.setBounds(0,0,1300,680);
-        ProductPanel2.setVisible(false);
+        ProductPanel2.setBackground(Color.white);
+        ProductPanel2.setVisible(true);
 
         MainPanel = new JPanel();
         MainPanel.setLayout(null);
-        MainPanel.setBackground(Color.gray);
+        MainPanel.setBackground(Color.WHITE);
         MainPanel.setVisible(true);
 
         CategoryPanel = new JPanel();
         CategoryPanel.setLayout(null);
-        CategoryPanel.setBackground(Color.gray);
+        CategoryPanel.setBackground(Color.WHITE);
+        CategoryPanel.setBounds(0,0,1300,680);
         CategoryPanel.setVisible(true);
 
         ButtonPanel = new JPanel();
         ButtonPanel.setLayout(null);
         ButtonPanel.setBackground(Color.WHITE);
         ButtonPanel.setBounds(0,0,1300,70);
-
-
 
         PagePanel = new JPanel();
         PagePanel.setLayout(null);
@@ -229,8 +229,6 @@ public class CategoryPanelGUI{
         int[] xLocation = new int[]{0,560,0,560,0,560,0,560};
         int[] yLocation = new int[]{0,0,130,130,260,260,390,390};
         itemList = new ArrayList<>();
-
-
         try{
             ProductPanel.removeAll();
 
@@ -259,6 +257,15 @@ public class CategoryPanelGUI{
         }catch (Exception e){
             System.out.println("오류 발생 : " + e.getMessage());
         }
+    }
+
+    public void visitProduct(JPanel jp){
+        System.out.println("잘 건너왔는지 테스트해봄"+jp.getName());
+        productPanelGUI = new ProductPanelGUI(itemList, Integer.parseInt(jp.getName()));
+        ProductPanel2 = productPanelGUI.MainPanel;
+        ProductPanel2.setBackground(Color.GRAY);
+        CategoryPanel.setVisible(false);
+        ProductPanel2.setVisible(true);
     }
 
     public void Convenience(){

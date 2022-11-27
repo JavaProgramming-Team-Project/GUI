@@ -16,13 +16,12 @@ public class ProductPanelGUI extends JPanel{
     public JPanel ReviewPanel;
     public JPanel infPanel;
     public JPanel ReservationPanel;
-    private JScrollPane scrollPane;
-    public Container ct;
     public ProductPanelGUI(List<Item> item,int number){
         System.out.println("호출 완료");
+        System.out.println(item);
+        System.out.println(number);
+
         Color bgColor = new Color(0xDEF4FF);
-        ct.setLayout(null);
-        ct.setBackground(Color.lightGray);
 
         PhotoPanel = new JPanel();
         PhotoPanel.setLayout(null);
@@ -52,8 +51,8 @@ public class ProductPanelGUI extends JPanel{
 
         MainPanel = new JPanel();
         MainPanel.setLayout(null);
-        MainPanel.setBounds(100,70,1080,630);
         MainPanel.setBackground(Function.SoftBlue2);
+        MainPanel.setVisible(true);
 
         MainPanel.add(PhotoPanel);
         MainPanel.add(PhotoPanel2);
