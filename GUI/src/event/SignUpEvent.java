@@ -2,6 +2,7 @@ package event;
 
 import api.MemberApi;
 import entity.Member;
+import ui.LoginGUI;
 import ui.MainPageGUI;
 
 import javax.swing.*;
@@ -38,7 +39,7 @@ public class SignUpEvent implements ActionListener {
                     phoneField.getText(), Integer.parseInt(ageField.getText()));
             MemberApi.signUp(member);
             signUpFrame.dispose();
-            new MainPageGUI();
+            new LoginGUI();
         }
     }
 }
