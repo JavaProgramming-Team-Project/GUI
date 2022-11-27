@@ -1,6 +1,5 @@
 package event;
 
-import api.ItemApi;
 import entity.Item;
 import ui.CategoryPanelGUI;
 import ui.ProductPanelGUI;
