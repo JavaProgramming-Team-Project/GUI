@@ -9,6 +9,7 @@ import java.awt.*;
 import java.util.List;
 
 public class ProductPanelGUI extends JPanel{
+    Color Black = new Color(0x212121);
     public Item item;
     public JPanel MainPanel;
     public JPanel PhotoPanel;
@@ -44,7 +45,7 @@ public class ProductPanelGUI extends JPanel{
         infPanel.setLayout(null);
         infPanel.setBackground(Color.WHITE);
         infPanel.setBounds(420,320,650,230);
-        //infPanel.setBorder(new TitledBorder(new LineBorder(Color.lightGray,1)));
+        infPanel.setBorder(new TitledBorder(new LineBorder(Color.lightGray,1)));
 
         ReservationPanel = new JPanel();
         ReservationPanel.setLayout(null);
@@ -58,16 +59,16 @@ public class ProductPanelGUI extends JPanel{
 
         // 라벨
         JLabel ItemNameLabel = new JLabel(item.getItemName());
-        ItemNameLabel.setFont(new Font("나눔스퀘어_ac ExtraBold",Font.PLAIN,20));
-        ItemNameLabel.setFont(ItemNameLabel.getFont().deriveFont(26.0f));
-        ItemNameLabel.setBounds(0,0,400,26);
+        ItemNameLabel.setFont(new Font("AppleSDGothicNeoEB00",Font.PLAIN,30));
+        ItemNameLabel.setFont(ItemNameLabel.getFont().deriveFont(30.0f));
+        ItemNameLabel.setBounds(5,5,400,30);
         //Line1.setOpaque();
-        ItemNameLabel.setForeground(Color.GRAY);
+        ItemNameLabel.setForeground(Black);
 
         JLabel ItemBodyLabel = new JLabel(item.getItemBody());
-        ItemBodyLabel.setFont(new Font("나눔스퀘어",Font.PLAIN,20));
+        ItemBodyLabel.setFont(new Font("AppleSDGothicNeoM00",Font.PLAIN,20));
         ItemBodyLabel.setFont(ItemBodyLabel.getFont().deriveFont(21.0f));
-        ItemBodyLabel.setBounds(0,30,400,26);
+        ItemBodyLabel.setBounds(5,35,400,26);
         //Line1.setOpaque();
         ItemBodyLabel.setForeground(Color.GRAY);
 
