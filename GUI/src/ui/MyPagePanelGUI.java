@@ -10,6 +10,14 @@ public class MyPagePanelGUI extends JPanel {
     private JPanel SchedulePanel;
 
     public MyPagePanelGUI(){
+        // 아이콘 추가
+        ImageIcon bookingIcon = new ImageIcon("src/Icon//book.png");
+        bookingIcon = Function.imageSetSize(bookingIcon,100,100);
+        ImageIcon memberIcon = new ImageIcon("src/Icon//member.png");
+        memberIcon = Function.imageSetSize(memberIcon,100,100);
+        ImageIcon pointIcon = new ImageIcon("src/Icon//point.png");
+        pointIcon = Function.imageSetSize(pointIcon,100,100);
+
         // 패널 관리
         MyPagePanel = new JPanel();
         MyPagePanel.setLayout(null);
@@ -43,10 +51,24 @@ public class MyPagePanelGUI extends JPanel {
         ScheduleLabel.setBounds(20,10,200,50);
         ScheduleLabel.setForeground(Color.GRAY);
 
+        // 아이콘 관리
+        JLabel bookingIconLabel = new JLabel(bookingIcon);
+        bookingIconLabel.setBounds(50,10,100,200);
+        JLabel memberIconLabel = new JLabel(memberIcon);
+        JLabel pointIconLabel = new JLabel(pointIcon);
+        pointIconLabel.setBounds(230,10,100,200);
+        //JLabel LineIcon = new JLabel(img_Line);
+        //LineIcon.setBounds(100,100,100,100);
+
+
         // 패널 추가 -- 화면 출력
         MemberInfoPanel.add(MemberInfo);
 
         SchedulePanel.add(ScheduleLabel);
+
+        InfoPanel.add(bookingIconLabel);
+        //InfoPanel.add(LineIcon);
+        InfoPanel.add(pointIconLabel);
 
         MyPagePanel.add(MemberInfoPanel);
         MyPagePanel.add(InfoPanel);
