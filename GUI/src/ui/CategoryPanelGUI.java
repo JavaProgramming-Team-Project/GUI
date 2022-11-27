@@ -206,14 +206,14 @@ public class CategoryPanelGUI{
 
     public void itemDisplay(String Category,int page){
         JLabel Line1 = new JLabel(); // [카테고리] + 이름
-        Line1.setFont(new Font("나눔스퀘어_ac ExtraBold",Font.PLAIN,20));
+        Line1.setFont(new Font("AppleSDGothicNeoEB00",Font.PLAIN,20));
         Line1.setFont(Line1.getFont().deriveFont(21.0f));
         Line1.setBounds(150,0,400,26);
         //Line1.setOpaque();
         Line1.setForeground(Color.GRAY);
 
         JLabel Line2 = new JLabel(); // 상품 설명
-        Line2.setFont(new Font("나눔스퀘어",Font.PLAIN,20));
+        Line2.setFont(new Font("AppleSDGothicNeoL00",Font.PLAIN,20));
         Line2.setFont(Line2.getFont().deriveFont(18.0f));
         Line2.setBounds(150,26,400,26);
         //Line2.setOpaque(false);
