@@ -9,17 +9,19 @@ import java.awt.*;
 import java.util.List;
 
 public class ProductPanelGUI extends JPanel{
-    public List<Item> item;
+    public Item item;
     public JPanel MainPanel;
     public JPanel PhotoPanel;
     public JPanel PhotoPanel2;
     public JPanel ReviewPanel;
     public JPanel infPanel;
     public JPanel ReservationPanel;
-    public ProductPanelGUI(List<Item> item,int number){
+    public ProductPanelGUI(List<Item> itemList,int number){
         System.out.println("호출 완료");
         System.out.println(item);
         System.out.println(number);
+
+        item = itemList.get(number);
 
         Color bgColor = new Color(0xDEF4FF);
 
@@ -40,8 +42,9 @@ public class ProductPanelGUI extends JPanel{
 
         infPanel = new JPanel();
         infPanel.setLayout(null);
-        infPanel.setBackground(bgColor);
+        infPanel.setBackground(Color.WHITE);
         infPanel.setBounds(420,320,650,230);
+        //infPanel.setBorder(new TitledBorder(new LineBorder(Color.lightGray,1)));
 
         ReservationPanel = new JPanel();
         ReservationPanel.setLayout(null);
@@ -52,7 +55,25 @@ public class ProductPanelGUI extends JPanel{
         MainPanel = new JPanel();
         MainPanel.setLayout(null);
         MainPanel.setBackground(Function.SoftBlue2);
-        MainPanel.setVisible(true);
+
+        // 라벨
+        JLabel ItemNameLabel = new JLabel(item.getItemName());
+        ItemNameLabel.setFont(new Font("나눔스퀘어_ac ExtraBold",Font.PLAIN,20));
+        ItemNameLabel.setFont(ItemNameLabel.getFont().deriveFont(26.0f));
+        ItemNameLabel.setBounds(0,0,400,26);
+        //Line1.setOpaque();
+        ItemNameLabel.setForeground(Color.GRAY);
+
+        JLabel ItemBodyLabel = new JLabel(item.getItemBody());
+        ItemBodyLabel.setFont(new Font("나눔스퀘어",Font.PLAIN,20));
+        ItemBodyLabel.setFont(ItemBodyLabel.getFont().deriveFont(21.0f));
+        ItemBodyLabel.setBounds(0,30,400,26);
+        //Line1.setOpaque();
+        ItemBodyLabel.setForeground(Color.GRAY);
+
+        // 패널 연동
+        infPanel.add(ItemNameLabel);
+        infPanel.add(ItemBodyLabel);
 
         MainPanel.add(PhotoPanel);
         MainPanel.add(PhotoPanel2);
