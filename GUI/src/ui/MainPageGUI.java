@@ -324,34 +324,42 @@ public class MainPageGUI extends JPanel{
         public void mouseClicked(MouseEvent e) {
             if(e.getSource() == StayPanel){
                 Category_Conv("숙박");
+                //categoryPanelGUI.itemDisplay("숙박",0);
                 categoryPanelGUI.StayLabel.setOpaque(true);
             }
             else if (e.getSource() == leisurePanel) {
                 Category_Conv("레저");
+                //categoryPanelGUI.itemDisplay("레저",0);
                 categoryPanelGUI.LeisureLabel.setOpaque(true);
             }
             else if (e.getSource() == FestivalPanel) {
                 Category_Conv("축제");
+                //categoryPanelGUI.itemDisplay("축제",0);
                 categoryPanelGUI.FestivalLabel.setOpaque(true);
             }
             else if (e.getSource() == ShowPanel) {
                 Category_Conv("공연");
+                //categoryPanelGUI.itemDisplay("공연",0);
                 categoryPanelGUI.ShowLabel.setOpaque(true);
             }
             else if (e.getSource() == DisplayPanel) {
                 Category_Conv("전시");
+                //categoryPanelGUI.itemDisplay("전시",0);
                 categoryPanelGUI.DisplayLabel.setOpaque(true);
             }
             else if (e.getSource() == TicketPanel) {
                 Category_Conv("티켓");
+                //categoryPanelGUI.itemDisplay("티켓",0);
                 categoryPanelGUI.TicketLabel.setOpaque(true);
             }
             else if (e.getSource() == RestaurantPanel) {
                 Category_Conv("식당");
+                //categoryPanelGUI.itemDisplay("식당",0);
                 categoryPanelGUI.RestaurantLabel.setOpaque(true);
             }
             else if (e.getSource() == BeautyPanel) {
                 Category_Conv("뷰티");
+                //categoryPanelGUI.itemDisplay("뷰티",0);
                 categoryPanelGUI.BeautyLabel.setOpaque(true);
             }
         }
