@@ -1,5 +1,7 @@
 package ui;
 
+import entity.Member;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -86,8 +88,6 @@ public class MainContainer extends JFrame{
 
         }
     }
-
-
     public static void main(String[] args){
         new MainContainer();
     }
