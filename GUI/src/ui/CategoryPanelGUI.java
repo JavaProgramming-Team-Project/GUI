@@ -210,7 +210,7 @@ public class CategoryPanelGUI{
         try{
             ProductPanel.removeAll();
 
-            itemList = ItemApi.itemListByCategory(Category);
+//            itemList = ItemApi.itemListByCategory(Category);
             System.out.println(itemList.size());
             for(int i=page; i<itemList.size(); i++) {
                 ItemPanel = new JPanel();

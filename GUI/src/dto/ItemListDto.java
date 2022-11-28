@@ -6,15 +6,19 @@ public class ItemListDto {
     private String itemAddress;
     private String itemCategory;
     private int itemPrice;
-    private Double avgRating;
+    private double avgRating;
 
-    public ItemListDto(Long itemKey, String itemName, String itemAddress, String itemCategory, int itemPrice, Double avgRating) {
+    public ItemListDto(Long itemKey, String itemName, String itemAddress, String itemCategory, int itemPrice, double avgRating) {
         this.itemKey = itemKey;
         this.itemName = itemName;
         this.itemAddress = itemAddress;
         this.itemCategory = itemCategory;
         this.itemPrice = itemPrice;
         this.avgRating = avgRating;
+    }
+
+    public ItemListDto() {
+
     }
 
     public Long getItemKey() {
@@ -37,7 +41,31 @@ public class ItemListDto {
         return itemPrice;
     }
 
-    public Double getAvgRating() {
+    public double getAvgRating() {
         return avgRating;
+    }
+
+    public void setItemKey(Long itemKey) {
+        this.itemKey = itemKey;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public void setItemAddress(String itemAddress) {
+        this.itemAddress = itemAddress;
+    }
+
+    public void setItemCategory(String itemCategory) {
+        this.itemCategory = itemCategory;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public void setAvgRating(double avgRating) {
+        this.avgRating = avgRating;
     }
 }
