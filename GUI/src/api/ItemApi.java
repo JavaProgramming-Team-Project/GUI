@@ -2,6 +2,7 @@ package api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.ItemListDto;
 import entity.Item;
 import ip.Host;
 
@@ -21,10 +22,10 @@ public class ItemApi {
     /** ---------------------------------------------------------------------------------------------------
      * 카테고리 별 상품 리스트
      * @param itemCategory String형 카테고리
-     * @return 해당 카테고리의 상품 리스트
+     * @return 해당 카테고리의 상품 DTO 리스트
      */
-    public static List<Item> itemListByCategory(String itemCategory) {
-        List<Item> list;
+    public static List<ItemListDto> itemListByCategory(String itemCategory) {
+        List<ItemListDto> list;
         try {
             String hostUrl = HOST + "/item/category/"+ URLEncoder.encode(itemCategory, StandardCharsets.UTF_8);
             HttpURLConnection conn = null;
@@ -47,7 +48,7 @@ public class ItemApi {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-            list = mapper.readValue(br.readLine(), new TypeReference<List<Item>>() {});
+            list = mapper.readValue(br.readLine(), new TypeReference<>() {});
             br.close();
 
         } catch (ProtocolException e) {
@@ -65,8 +66,8 @@ public class ItemApi {
      * @param itemName String 형 itemName
      * @return 검색어가 이름에 포함된 Item 객체들의 리스트
      */
-    public static List<Item> findItemByName(String itemName) {
-        List<Item> list = new ArrayList<>();
+    public static List<ItemListDto> findItemByName(String itemName) {
+        List<ItemListDto> list = new ArrayList<>();
 
         try {
             String hostUrl = HOST + "/item/name/"+URLEncoder.encode(itemName, StandardCharsets.UTF_8);

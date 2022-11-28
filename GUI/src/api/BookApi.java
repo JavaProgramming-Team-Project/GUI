@@ -3,8 +3,6 @@ package api;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Book;
-import entity.Item;
-import entity.Member;
 import ip.Host;
 
 import java.io.BufferedReader;
@@ -75,14 +73,14 @@ public class BookApi {
 
     /** ---------------------------------------------------------------------------------------------------
      * 회원의 예약 리스트
-     * @param memberId 예약 리스트를 조회할 회원의 memberId
+     * @param memberKey 예약 리스트를 조회할 회원의 memberKey
      * @return memberId를 가진 회원의 예약 리스트
      */
-    public List<Book> bookList(Long memberId) {
+    public static List<Book> bookList(Long memberKey) {
         List<Book> list = new ArrayList<>();
 
         try {
-            String hostUrl = HOST + "/book/list/"+ URLEncoder.encode(String.valueOf(memberId), StandardCharsets.UTF_8);
+            String hostUrl = HOST + "/book/list/"+ URLEncoder.encode(String.valueOf(memberKey), StandardCharsets.UTF_8);
             HttpURLConnection conn = null;
 
             URL url = new URL(hostUrl);
@@ -114,5 +112,39 @@ public class BookApi {
             throw new RuntimeException(e);
         }
         return list;
+    }
+
+    /** ---------------------------------------------------------------------------------------------------
+     * 예약 취소
+     * @param bookKey 취소할 예약의 primary key
+     */
+    public static void bookCancel(Long bookKey) {
+        try {
+            String hostUrl = HOST + "/book/"+ URLEncoder.encode(String.valueOf(bookKey), StandardCharsets.UTF_8);
+            HttpURLConnection conn = null;
+
+            URL url = new URL(hostUrl);
+            conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("DELETE");
+            conn.setConnectTimeout(3000);
+            conn.setRequestProperty("Accept", "application/json; utf-8");
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode == 400) {
+                System.out.println("400 : 명령 실행 오류");
+            } else if (responseCode == 500) {
+                System.out.println("500 : 서버 에러");
+            } else {
+                System.out.println(responseCode + " : 응답 코드");
+            }
+
+        } catch (ProtocolException e) {
+            throw new RuntimeException(e);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
