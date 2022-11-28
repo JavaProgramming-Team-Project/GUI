@@ -11,9 +11,9 @@ import static ui.Function.imageSetSize;
 
 public class MainPageGUI extends JPanel{
     // 패널 및 이벤트 관련
+    public ProductPanelGUI productPanelGUI;
     public MainPageEvent mainPageEvent;
-    public MyPagePanelGUI myPagePanelGUI
-            = new MyPagePanelGUI();
+    public MyPagePanelGUI myPagePanelGUI;
     public CategoryPanelGUI categoryPanelGUI;
     public MainPage_ItemPanel mainPage_itemPanel;
     // 이벤트 관련 패널
@@ -29,7 +29,7 @@ public class MainPageGUI extends JPanel{
     public JPanel CategoryIconPanel; // 메인화면 카테고리 패널
     public JPanel BannerPanel; // 가운데 이벤트 패널..?
     public JPanel ItemPanel; // 상품추천 패널
-    public JPanel ProductPanel = new JPanel();
+    public JPanel ProductPanel;
 
     // 카테고리 관련 패널
     public JPanel StayPanel;
@@ -42,7 +42,6 @@ public class MainPageGUI extends JPanel{
     public JPanel BeautyPanel;
 
     public MainPageGUI(){
-        mainPageEvent = new MainPageEvent();
         // 색상
         Color HeaderColor = new Color(0x58CCFF);
         Color DeepBlue = new Color(0x18A8F1);
@@ -105,6 +104,7 @@ public class MainPageGUI extends JPanel{
         MainPagePanel.setBackground(Color.white);
         MainPagePanel.setVisible(true);
 
+        myPagePanelGUI = new MyPagePanelGUI();
         MyPagePanel = myPagePanelGUI.MyPagePanel;
         MyPagePanel.setLayout(null);
         MyPagePanel.setBounds(0,0,1300,680);
@@ -151,17 +151,12 @@ public class MainPageGUI extends JPanel{
         BeautyPanel.setBounds(970,10,100,120);
         BeautyPanel.setBackground(Color.white);
 
-        categoryPanelGUI = new CategoryPanelGUI("숙박");
+        //categoryPanelGUI = new CategoryPanelGUI("숙박");
         CategoryPanel = new JPanel();
         CategoryPanel.setLayout(null);
         CategoryPanel.setBounds(0,0,1300,680);
         CategoryPanel.setBackground(Color.gray);
         CategoryPanel.setVisible(false);
-
-        ProductPanel.setLayout(null);
-        ProductPanel.setBounds(0,0,1300,680);
-        ProductPanel.setBackground(Color.GRAY);
-        ProductPanel.setVisible(false);
 
         // 라벨
         JLabel TitleNameLabel = new JLabel("EveryBook");
@@ -312,7 +307,6 @@ public class MainPageGUI extends JPanel{
         MainPanel.add(MainPagePanel);
         MainPanel.add(MyPagePanel);
         MainPanel.add(CategoryPanel);
-        MainPanel.add(ProductPanel);
 
         // 이벤트 연동 -------------------------------------------------------
         StayPanel.addMouseListener(new MyMouseListener());
@@ -330,34 +324,42 @@ public class MainPageGUI extends JPanel{
         public void mouseClicked(MouseEvent e) {
             if(e.getSource() == StayPanel){
                 Category_Conv("숙박");
+                //categoryPanelGUI.itemDisplay("숙박",0);
                 categoryPanelGUI.StayLabel.setOpaque(true);
             }
             else if (e.getSource() == leisurePanel) {
                 Category_Conv("레저");
+                //categoryPanelGUI.itemDisplay("레저",0);
                 categoryPanelGUI.LeisureLabel.setOpaque(true);
             }
             else if (e.getSource() == FestivalPanel) {
                 Category_Conv("축제");
+                //categoryPanelGUI.itemDisplay("축제",0);
                 categoryPanelGUI.FestivalLabel.setOpaque(true);
             }
             else if (e.getSource() == ShowPanel) {
                 Category_Conv("공연");
+                //categoryPanelGUI.itemDisplay("공연",0);
                 categoryPanelGUI.ShowLabel.setOpaque(true);
             }
             else if (e.getSource() == DisplayPanel) {
                 Category_Conv("전시");
+                //categoryPanelGUI.itemDisplay("전시",0);
                 categoryPanelGUI.DisplayLabel.setOpaque(true);
             }
             else if (e.getSource() == TicketPanel) {
                 Category_Conv("티켓");
+                //categoryPanelGUI.itemDisplay("티켓",0);
                 categoryPanelGUI.TicketLabel.setOpaque(true);
             }
             else if (e.getSource() == RestaurantPanel) {
                 Category_Conv("식당");
+                //categoryPanelGUI.itemDisplay("식당",0);
                 categoryPanelGUI.RestaurantLabel.setOpaque(true);
             }
             else if (e.getSource() == BeautyPanel) {
                 Category_Conv("뷰티");
+                //categoryPanelGUI.itemDisplay("뷰티",0);
                 categoryPanelGUI.BeautyLabel.setOpaque(true);
             }
         }
@@ -390,10 +392,9 @@ public class MainPageGUI extends JPanel{
     }
 
     public void Category_Conv(String Category){
-        CategoryPanel.removeAll();
         MainPanel.remove(CategoryPanel);
         categoryPanelGUI = new CategoryPanelGUI(Category);
-        CategoryPanel = categoryPanelGUI.CategoryPanel;
+        CategoryPanel = categoryPanelGUI.MainPanel;
         CategoryPanel.setLayout(null);
         CategoryPanel.setBounds(0,0,1300,680);
         CategoryPanel.setBackground(Color.white);
